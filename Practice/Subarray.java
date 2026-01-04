@@ -70,13 +70,52 @@ public class Subarray {
         System.out.println("Maximum Subarray Sum = " + MaxSum);
     }
 
+    // Maximum Subarray Sum => Kaden's Alogithm
+    // Time complexity=O(n)
+    public static void MaxSubarrayKaden(int num[]) {
+        int curSum = 0;
+        int MaxSum = Integer.MIN_VALUE;
+
+        for (int i = 0; i < num.length; i++) {
+            curSum += num[i];
+            if (curSum < 0) {
+                curSum = 0;
+            }
+            if (curSum > MaxSum) {
+                MaxSum = curSum;
+            }
+
+        }
+
+        System.out.println("Maximum Subarray Sum = " + MaxSum);
+    }
+
+    // Leetcode Solution for Maximum Subarray Sum
+
+    public static void MaxSubarrayLeetCode(int num[]) {
+        int curSum = 0;
+        int MaxSum = Integer.MIN_VALUE;
+        for (int number : num) {
+            curSum = Math.max(curSum, 0);
+            curSum += number;
+            MaxSum = Math.max(MaxSum, curSum);
+        }
+
+        System.out.println("Maximum Subarray Sum = " + MaxSum);
+    }
+
     public static void main(String args[]) {
-        int numbers[] = { 2, 4, 6, 8, 10 };
+        int numbers[] = { -2, -4, -6, -8, -1 };
+        int num[] = { -2, -3, 4, -1, -2, 1, 5, -3 };
 
         // printSubarrays(numbers);
 
         // MaxSubarrayBrute(numbers);
 
-        MaxSubarrayPrefix(numbers);
+        // MaxSubarrayPrefix(numbers);
+
+        // MaxSubarrayKaden(num);
+
+        MaxSubarrayLeetCode(numbers);
     }
 }
