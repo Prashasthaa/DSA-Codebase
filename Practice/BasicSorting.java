@@ -1,6 +1,9 @@
+import java.util.Arrays;
+import java.util.Collections;
+
 public class BasicSorting {
 
-    public static void printArray(int arr[]) {
+    public static void printArray(Integer arr[]) {
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");
         }
@@ -58,12 +61,16 @@ public class BasicSorting {
     }
 
     public static void main(String[] args) {
-        int arr[] = { 5, 4, 1, 3, 2 };
+        // int arr[] = { 5, 4, 1, 3, 2 };
+        Integer arr[] = { 5, 4, 1, 3, 2 };
         // int arr[] = { 1, 2, 3, 4, 5 };
         printArray(arr);
         // bubbleSort(arr);
         // selectionSort(arr);
-        insertionSort(arr);
+        // insertionSort(arr);
+        // Arrays.sort(arr);
+        // Arrays.sort(arr, 0, 3);
+        Arrays.sort(arr, Collections.reverseOrder());
         printArray(arr);
     }
 
