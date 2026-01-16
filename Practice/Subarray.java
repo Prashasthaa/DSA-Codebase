@@ -104,9 +104,21 @@ public class Subarray {
         System.out.println("Maximum Subarray Sum = " + MaxSum);
     }
 
+    public static boolean distnictElement(int num[]) {
+        for (int i = 0; i < num.length - 1; i++) {
+            for (int j = i + 1; j < num.length; j++) {
+                if (num[i] == num[j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public static void main(String args[]) {
-        int numbers[] = { -2, -4, -6, -8, -1 };
-        int num[] = { -2, -3, 4, -1, -2, 1, 5, -3 };
+        // int numbers[] = { -2, -4, -6, -8, -1 };
+        // int num[] = { -2, -3, 4, -1, -2, 1, 5, -3 };
+        int[] nums = { 1, 2, 3, 4, 1, 2, 2, 2 };
 
         // printSubarrays(numbers);
 
@@ -116,6 +128,9 @@ public class Subarray {
 
         // MaxSubarrayKaden(num);
 
-        MaxSubarrayLeetCode(numbers);
+        // MaxSubarrayLeetCode(numbers);
+
+        System.out.println(distnictElement(nums));
+
     }
 }
