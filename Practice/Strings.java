@@ -12,6 +12,23 @@ public class Strings {
         System.out.println("Palindrome");
     }
 
+    public static void shortestPath(String path) {
+        int x = 0, y = 0;
+        for (int i = 0; i < path.length(); i++) {
+            char dir = path.charAt(i);
+            if (dir == 'W')
+                x--;
+            else if (dir == 'E')
+                x++;
+            else if (dir == 'S')
+                y--;
+            else if (dir == 'N')
+                y++;
+        }
+        double shortestPath = Math.sqrt((x * x) + (y * y));
+        System.out.println("PAth =" + shortestPath);
+    }
+
     public static void main(String[] args) {
 
         // // Defining strings
@@ -46,6 +63,11 @@ public class Strings {
         String str = "racecar";
 
         palindrome(str);
+
+        String path = "WWEESSEENN";
+        String path1 = "WNEENESENNN";
+        shortestPath(path);
+        shortestPath(path1);
 
     }
 
