@@ -2,6 +2,16 @@ import java.util.Scanner;
 
 public class Strings {
 
+    public static void palindrome(String str) {
+        for (int i = 0; i < str.length() / 2; i++) {
+            if (str.charAt(i) != str.charAt(str.length() - 1 - i)) {
+                System.out.println("Not Palindrome");
+                return;
+            }
+        }
+        System.out.println("Palindrome");
+    }
+
     public static void main(String[] args) {
 
         // // Defining strings
@@ -32,6 +42,11 @@ public class Strings {
 
         // // charAt method
         // System.out.println(fullName1.charAt(7));
+
+        String str = "racecar";
+
+        palindrome(str);
+
     }
 
 }
