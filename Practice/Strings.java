@@ -19,10 +19,19 @@ public class Strings {
         // // output the string
         // System.out.println(name);
 
-        // Length of string
-        String fullName = "Prashastha Poojary";
-        System.out.println(fullName.length());
+        // // Length of string
+        // String fullName = "Prashastha Poojary";
+        // System.out.println(fullName.length());
 
+        // // concatenation
+        // String firstName = "Prashastha";
+        // String lastName = "Poojary";
+
+        // String fullName1 = firstName + " " + lastName;
+        // System.out.println(fullName1);
+
+        // // charAt method
+        // System.out.println(fullName1.charAt(7));
     }
 
 }
