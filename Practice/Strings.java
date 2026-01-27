@@ -85,15 +85,23 @@ public class Strings {
         // // built in substring
         // System.out.println(str.substring(0, 5));
 
-        // Print Largest String
-        String fruits[] = { "apple", "mango", "banana" };
-        String largest = fruits[0];
-        for (int i = 1; i < fruits.length; i++) {
-            if (largest.compareTo(fruits[i]) < 0) {
-                largest = fruits[i];
-            }
+        // // Print Largest String
+        // String fruits[] = { "apple", "mango", "banana" };
+        // String largest = fruits[0];
+        // for (int i = 1; i < fruits.length; i++) {
+        // if (largest.compareTo(fruits[i]) < 0) {
+        // largest = fruits[i];
+        // }
+        // }
+        // System.out.println(largest);
+
+        StringBuilder sb = new StringBuilder("");
+        for (char ch = 'a'; ch <= 'z'; ch++) {
+            sb.append(ch);
+
         }
-        System.out.println(largest);
+        System.out.println(sb);
+
     }
 
 }
