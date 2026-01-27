@@ -29,6 +29,14 @@ public class Strings {
         System.out.println("PAth =" + shortestPath);
     }
 
+    public static String subString(String str, int si, int ei) {
+        String subString = "";
+        for (int i = si; i < ei; i++) {
+            subString += str.charAt(i);
+        }
+        return subString;
+    }
+
     public static void main(String[] args) {
 
         // // Defining strings
@@ -60,14 +68,22 @@ public class Strings {
         // // charAt method
         // System.out.println(fullName1.charAt(7));
 
-        String str = "racecar";
+        // String str = "racecar";
 
-        palindrome(str);
+        // palindrome(str);
 
-        String path = "WWEESSEENN";
-        String path1 = "WNEENESENNN";
-        shortestPath(path);
-        shortestPath(path1);
+        // String path = "WWEESSEENN";
+        // String path1 = "WNEENESENNN";
+        // shortestPath(path);
+        // shortestPath(path1);
+
+        // // Substring
+        // String str = "Hello World";
+
+        // System.out.println(subString(str, 0, 5));
+
+        // // built in substring
+        // System.out.println(str.substring(0, 5));
 
     }
 
