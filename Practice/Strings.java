@@ -54,6 +54,22 @@ public class Strings {
         return sb.toString();
     }
 
+    public static String compress(String str) {
+        StringBuilder compressedString = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            Integer count = 1;
+            while (i < str.length() - 1 && str.charAt(i) == str.charAt(i + 1)) {
+                count++;
+                i++;
+            }
+            compressedString.append(str.charAt(i));
+            if (count > 1) {
+                compressedString.append(count);
+            }
+        }
+        return compressedString.toString();
+    }
+
     public static void main(String[] args) {
 
         // // Defining strings
@@ -119,8 +135,11 @@ public class Strings {
         // }
         // System.out.println(sb);
 
-        String str = "hii, i am prashastha!";
-        System.out.println(toUpperCase(str));
+        // String str = "hii, i am prashastha!";
+        // System.out.println(toUpperCase(str));
+
+        String str = "aabbbbcccdddds";
+        System.out.println(compress(str));
     }
 
 }
