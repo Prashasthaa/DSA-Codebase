@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Strings {
 
@@ -70,6 +71,32 @@ public class Strings {
         return compressedString.toString();
     }
 
+    public static void countvowels(String str) {
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+
+    public static boolean anagrams(String str1, String str2) {
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+        str1.toLowerCase();
+        str2.toLowerCase();
+        char str1Array[] = str1.toCharArray();
+        char str2Array[] = str2.toCharArray();
+
+        Arrays.sort(str1Array);
+        Arrays.sort(str2Array);
+
+        return Arrays.equals(str1Array, str2Array);
+    }
+
     public static void main(String[] args) {
 
         // // Defining strings
@@ -138,8 +165,16 @@ public class Strings {
         // String str = "hii, i am prashastha!";
         // System.out.println(toUpperCase(str));
 
-        String str = "aabbbbcccdddds";
-        System.out.println(compress(str));
+        // String str = "aabbbbcccdddds";
+        // System.out.println(compress(str));
+
+        // String str = "abcde";
+        // countvowels(str);
+
+        String str1 = "race";
+        String str2 = "care";
+        System.out.println(anagrams(str1, str2));
+
     }
 
 }
