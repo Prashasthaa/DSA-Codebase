@@ -46,6 +46,39 @@ public class BitManipulation {
 
     }
 
+    public static void clearLastIBits(int n, int i) {
+        int bitMask = (~0) << i; // -1 == ~0
+        System.out.println(n & bitMask);
+    }
+
+    public static void clearRangeOfBits(int n, int i, int j) {
+        int a = (~0) << (j + 1);
+        int b = (1 << i) - 1;
+        int bitMask = a | b;
+        System.out.println(n & bitMask);
+    }
+
+    public static void powerOf2(int n) {
+        int bitMask = n - 1;
+        int res = n & bitMask;
+        if (res == 0)
+            System.out.println("Power of 2");
+        else
+            System.out.println("not power of 2");
+    }
+
+    public static void countSetBits(int n) {
+        int count = 0;
+        while (n > 0) {
+            if ((n & 1) != 0) {
+                count++;
+            }
+            n = n >> 1;
+
+        }
+        System.out.println(count);
+    }
+
     public static void main(String[] args) {
 
         // // binary operators
@@ -78,6 +111,14 @@ public class BitManipulation {
         // clearIthBit(10, 1);
 
         // updateIthBit(10, 0, 1);
+
+        // clearLastIBits(15, 1);
+
+        // clearRangeOfBits(10, 2, 4);
+
+        // powerOf2(2);/////////
+
+        countSetBits(10);
 
     }
 }
