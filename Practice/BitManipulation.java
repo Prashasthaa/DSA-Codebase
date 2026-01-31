@@ -79,6 +79,29 @@ public class BitManipulation {
         System.out.println(count);
     }
 
+    public static void fastExponentiation(int a, int n) {
+        int ans = 1;
+        while (n > 0) {
+            if ((n & 1) != 0) {
+                // check the LSB
+                ans = ans * a;
+            }
+            a = a * a;
+            n = n >> 1;
+        }
+        System.out.println(ans);
+    }
+
+    public static void swapNums(int a, int b) {
+        System.out.println("a = " + a + ", b= " + b);
+
+        a = a ^ b;
+        b = a ^ b;
+        a = a ^ b;
+        System.out.println("a = " + a + ", b= " + b);
+
+    }
+
     public static void main(String[] args) {
 
         // // binary operators
@@ -118,7 +141,11 @@ public class BitManipulation {
 
         // powerOf2(2);/////////
 
-        countSetBits(10);
+        // countSetBits(10);
+
+        // fastExponentiation(3, 05);
+
+        swapNums(2, 3);
 
     }
 }
