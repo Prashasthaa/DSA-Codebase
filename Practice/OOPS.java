@@ -23,12 +23,44 @@ public class OOPS {
         // Student1 s1 = new Student1("Prashastha");
         // System.out.println(s1.name);
 
-        Fish tuna = new Fish();
-        tuna.eat();
+        // Fish tuna = new Fish();
+        // tuna.eat();
+
+        Calculator cal = new Calculator();
+        System.out.println(cal.sum((float) 1.1, (float) 10.6));
+        System.out.println(cal.sum(1, 6));
+        System.out.println(cal.sum(1, 6, 9));
     }
 }
 
+// Polymorphism
+// method overloading
+// =>multiple functions with the same name but different parameter types
+
+class Calculator {
+    int sum(int a, int b) {
+        return a + b;
+    }
+
+    float sum(float a, float b) {
+        return a + b;
+    }
+
+    int sum(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+// method overriding
+
 // Inheritance
+
+// types of inheritance
+// 1)Single level inheritance
+// 2)Multiple level inheritance
+// 3)Hierarhial inheritance
+// 4)Hybrid inheritance
+// 5)Multiple inheritance (not there in java but indirectly implemented using
+// interface)
 // Base class
 class Animal {
     String color;
