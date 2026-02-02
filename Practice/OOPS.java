@@ -1,24 +1,45 @@
 public class OOPS {
 
     public static void main(String[] args) {
-        Pen p1 = new Pen(); // created a pen object p1
-        // ==> in Java object are created in heap
+        // Pen p1 = new Pen(); // created a pen object p1
+        // // ==> in Java object are created in heap
 
-        p1.setColor("Blue");
-        System.out.println(p1.color);
+        // p1.setColor("Blue");
+        // System.out.println(p1.getColor());
 
-        p1.setTip(6);
-        System.out.println(p1.tip);
+        // p1.setTip(6);
+        // System.out.println(p1.getTip());
 
-        BankAccount myAccount = new BankAccount();
-        myAccount.username = "prashastha";
+        // BankAccount myAccount = new BankAccount();
+        // myAccount.username = "prashastha";
 
-        // // error due to The field BankAccount.password is not visible it has the
-        // access
-        // // specifier as private
-        // myAccount.password = "password";
+        // // // error due to The field BankAccount.password is not visible it has the
+        // // access
+        // // // specifier as private
+        // // myAccount.password = "password";
 
-        myAccount.setPassword("newPassword");
+        // myAccount.setPassword("newPassword");
+
+        Student1 s1 = new Student1("Prashastha");
+        System.out.println(s1.name);
+    }
+}
+
+// Constructor
+// types of constructor
+// =>non-paramaterized
+// =>parameterized
+// =>copy constructors
+
+// Shallow and Deep copy
+
+class Student1 {
+    String name;
+    int roll;
+
+    Student1(String name) {
+        this.name = name;
+        System.out.println("Constructor is called....s");
     }
 }
 
@@ -38,15 +59,23 @@ class BankAccount {
 }
 
 class Pen {
-    String color;
-    int tip;
+    private String color;
+    private int tip;
 
     void setColor(String newColor) {
-        color = newColor;
+        this.color = newColor;
     }
 
     void setTip(int newTip) {
-        tip = newTip;
+        this.tip = newTip;
+    }
+
+    String getColor() {
+        return this.color;
+    }
+
+    int getTip() {
+        return this.tip;
     }
 }
 
