@@ -20,8 +20,34 @@ public class OOPS {
 
         // myAccount.setPassword("newPassword");
 
-        Student1 s1 = new Student1("Prashastha");
-        System.out.println(s1.name);
+        // Student1 s1 = new Student1("Prashastha");
+        // System.out.println(s1.name);
+
+        Fish tuna = new Fish();
+        tuna.eat();
+    }
+}
+
+// Inheritance
+// Base class
+class Animal {
+    String color;
+
+    void eat() {
+        System.out.println("eats");
+    }
+
+    void breathes() {
+        System.out.println("breathes");
+    }
+}
+
+// derived class
+class Fish extends Animal {
+    int fins;
+
+    void swim() {
+        System.out.println("Swims in water");
     }
 }
 
