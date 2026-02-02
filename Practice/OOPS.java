@@ -30,6 +30,9 @@ public class OOPS {
         System.out.println(cal.sum((float) 1.1, (float) 10.6));
         System.out.println(cal.sum(1, 6));
         System.out.println(cal.sum(1, 6, 9));
+
+        Deer d = new Deer();
+        d.eat();
     }
 }
 
@@ -51,7 +54,20 @@ class Calculator {
     }
 }
 // method overriding
+/// =>Parent and child classes both contain the same function with a different
+// defination.
 
+class Animal1 {
+    void eat() {
+        System.out.println("Eats anything");
+    }
+}
+
+class Deer extends Animal1 {
+    void eat() {
+        System.out.println("Eats grass");
+    }
+}
 // Inheritance
 
 // types of inheritance
