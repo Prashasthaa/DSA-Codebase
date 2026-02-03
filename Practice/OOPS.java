@@ -45,9 +45,35 @@ public class OOPS {
         // c1.eat();
         // c1.walk();
 
-        Queen q = new Queen();
-        q.moves();
+        // Queen q = new Queen();
+        // q.moves();
 
+        Student1 s1 = new Student1();
+        s1.schoolName = "AJIET";
+
+        Student1 s2 = new Student1();
+        System.out.println(s2.schoolName);
+
+        Student1 s3 = new Student1();
+        s3.schoolName = "SVVHSS";
+        System.out.println(s3.schoolName);
+    }
+}
+
+// Static Keyword
+
+class Student1 {
+    String name;
+    int roll;
+
+    static String schoolName;
+
+    void setName(String name) {
+        this.name = name;
+    }
+
+    String getName() {
+        return this.name;
     }
 }
 
