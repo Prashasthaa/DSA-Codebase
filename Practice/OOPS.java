@@ -26,24 +26,28 @@ public class OOPS {
         // Fish tuna = new Fish();
         // tuna.eat();
 
-        Calculator cal = new Calculator();
-        System.out.println(cal.sum((float) 1.1, (float) 10.6));
-        System.out.println(cal.sum(1, 6));
-        System.out.println(cal.sum(1, 6, 9));
+        // Calculator cal = new Calculator();
+        // System.out.println(cal.sum((float) 1.1, (float) 10.6));
+        // System.out.println(cal.sum(1, 6));
+        // System.out.println(cal.sum(1, 6, 9));
 
-        Deer d = new Deer();
-        d.eat();
+        // Deer d = new Deer();
+        // d.eat();
 
-        Horse h1 = new Horse();
-        h1.eat();
-        h1.walk();
-        System.out.println(h1.color);
-        h1.changeColor();
-        System.out.println(h1.color);
+        // Horse h1 = new Horse();
+        // h1.eat();
+        // h1.walk();
+        // System.out.println(h1.color);
+        // h1.changeColor();
+        // System.out.println(h1.color);
 
-        Chicken c1 = new Chicken();
-        c1.eat();
-        c1.walk();
+        // Chicken c1 = new Chicken();
+        // c1.eat();
+        // c1.walk();
+
+        Queen q = new Queen();
+        q.moves();
+
     }
 }
 
@@ -56,6 +60,33 @@ interface ChessPlayer {
     void moves();
 }
 
+class Queen implements ChessPlayer {
+    @Override
+    public void moves() {
+        System.out.println("Up,down, left, right, diagonal (in all 4 directions)");
+    }
+}
+
+class Knight implements ChessPlayer {
+    @Override
+    public void moves() {
+        System.out.println("diagonal");
+    }
+}
+
+class Rook implements ChessPlayer {
+    @Override
+    public void moves() {
+        System.out.println("Up,down, left, right");
+    }
+}
+
+class King implements ChessPlayer {
+    @Override
+    public void moves() {
+        System.out.println("Up,down, left, right, diagonal( by 1 step) ");
+    }
+}
 // Abtract classes
 
 abstract class Animal2 {
