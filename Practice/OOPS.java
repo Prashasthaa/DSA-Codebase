@@ -33,9 +33,64 @@ public class OOPS {
 
         Deer d = new Deer();
         d.eat();
+
+        Horse h1 = new Horse();
+        h1.eat();
+        h1.walk();
+        System.out.println(h1.color);
+        h1.changeColor();
+        System.out.println(h1.color);
+
+        Chicken c1 = new Chicken();
+        c1.eat();
+        c1.walk();
     }
 }
 
+// Abstraction
+
+// Interface
+// ==>Blueprint of a classes
+
+interface ChessPlayer {
+    void moves();
+}
+
+// Abtract classes
+
+abstract class Animal2 {
+    String color;
+
+    Animal2() {
+        color = "brown";
+    }
+
+    void eat() {
+        System.out.println("animal eats");
+    }
+
+    abstract void walk();
+}
+
+class Horse extends Animal2 {
+    void changeColor() {
+        color = "dark brown";
+    }
+
+    void walk() {
+        System.out.println("walks on four legs");
+    }
+}
+
+class Chicken extends Animal2 {
+    void changeColor() {
+        color = "yellow";
+    }
+
+    void walk() {
+        System.out.println("walks on two legs9");
+    }
+}
 // Polymorphism
 // method overloading
 // =>multiple functions with the same name but different parameter types
