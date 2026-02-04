@@ -48,34 +48,51 @@ public class OOPS {
         // Queen q = new Queen();
         // q.moves();
 
-        Student1 s1 = new Student1();
-        s1.schoolName = "AJIET";
+        // Student1 s1 = new Student1();
+        // s1.schoolName = "AJIET";
 
-        Student1 s2 = new Student1();
-        System.out.println(s2.schoolName);
+        // Student1 s2 = new Student1();
+        // System.out.println(s2.schoolName);
 
-        Student1 s3 = new Student1();
-        s3.schoolName = "SVVHSS";
-        System.out.println(s3.schoolName);
+        // Student1 s3 = new Student1();
+        // s3.schoolName = "SVVHSS";
+        // System.out.println(s3.schoolName);
+
+        Horse h1 = new Horse();
+
+    }
+}
+
+// Super keyword
+class Animal3 {
+    Animal3() {
+        System.out.println("animal constructor is called ");
+    }
+}
+
+class Horse extends Animal3 {
+    Horse() {
+        super();
+        System.out.println("horse constructor is calledf");
     }
 }
 
 // Static Keyword
 
-class Student1 {
-    String name;
-    int roll;
+// class Student1 {
+// String name;
+// int roll;
 
-    static String schoolName;
+// static String schoolName;
 
-    void setName(String name) {
-        this.name = name;
-    }
+// void setName(String name) {
+// this.name = name;
+// }
 
-    String getName() {
-        return this.name;
-    }
-}
+// String getName() {
+// return this.name;
+// }
+// }
 
 // Abstraction
 
@@ -129,7 +146,7 @@ abstract class Animal2 {
     abstract void walk();
 }
 
-class Horse extends Animal2 {
+class Horse1 extends Animal2 {
     void changeColor() {
         color = "dark brown";
     }
