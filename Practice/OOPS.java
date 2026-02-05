@@ -58,9 +58,33 @@ public class OOPS {
         // s3.schoolName = "SVVHSS";
         // System.out.println(s3.schoolName);
 
-        Horse h1 = new Horse();
+        // Horse h1 = new Horse();
+
+        Complex c = new Complex();
+        c.sum(2, 3, 4, 5);
+        c.difference(2, 3, 4, 5);
+        c.product(2, 3, 4, 5);
 
     }
+}
+
+//
+
+// Practice
+class Complex {
+    void sum(int a, int b, int c, int d) {
+        System.out.println("sum=" + (a + c) + "+" + (b + d) + "i");
+    }
+
+    void difference(int a, int b, int c, int d) {
+        System.out.println("sum=" + (a - c) + "+" + (b - d) + "i");
+    }
+    // product (ac−bd)+(ad+bc)i
+
+    void product(int a, int b, int c, int d) {
+        System.out.println("sum=" + ((a * c) - (b * d)) + "+" + ((a * d) + (b * c)) + "i");
+    }
+
 }
 
 // Super keyword
