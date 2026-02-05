@@ -78,6 +78,7 @@ class Complex {
 
     void difference(int a, int b, int c, int d) {
         System.out.println("sum=" + (a - c) + "+" + (b - d) + "i");
+
     }
     // product (ac−bd)+(ad+bc)i
 
