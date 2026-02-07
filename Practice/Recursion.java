@@ -30,12 +30,21 @@ public class Recursion {
         return n + sum(n - 1);
     }
 
+    public static int fibonacciNum(int n) {
+        if (n == 0 || n == 1) {
+            return n;
+        }
+        return fibonacciNum(n - 1) + fibonacciNum(n - 2);
+
+    }
+
     public static void main(String[] args) {
         int n = 5;
         // printDecreasingNum(n);
         // printIncreasingNum(n);
         System.out.println(factorial(n));
         System.out.println(sum(n));
+        System.out.println(fibonacciNum(2));
 
     }
 
