@@ -7,6 +7,7 @@ public class Recursion {
         printDecreasingNum(n - 1);
     }
 
+    // print increasing num
     public static void printIncreasingNum(int n) {
         if (n == 1) {
             System.out.println(n);
@@ -23,6 +24,7 @@ public class Recursion {
         return n * factorial((n - 1));
     }
 
+    // calculate sum of n numbers
     public static int sum(int n) {
         if (n == 1) {
             return n;
@@ -30,6 +32,7 @@ public class Recursion {
         return n + sum(n - 1);
     }
 
+    // calculate nth fibonacci number
     public static int fibonacciNum(int n) {
         if (n == 0 || n == 1) {
             return n;
@@ -38,13 +41,29 @@ public class Recursion {
 
     }
 
+    // Check if a given array is sorted or not
+    public static boolean isSorted(int arr[], int i) {
+        if (i == arr.length - 1) {
+            return true;
+        }
+        if (arr[i] <= arr[i + 1]) {
+            return isSorted(arr, i + 1);
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         int n = 5;
         // printDecreasingNum(n);
         // printIncreasingNum(n);
-        System.out.println(factorial(n));
-        System.out.println(sum(n));
-        System.out.println(fibonacciNum(2));
+        // System.out.println(factorial(n));
+        // System.out.println(sum(n));
+        // System.out.println(fibonacciNum(2));
+
+        int num[] = { 1, 23, 34, 21, 353 };
+        int num1[] = { 1, 2, 3, 4, 5 };
+        System.out.println(isSorted(num, 0));
+        System.out.println(isSorted(num1, 0));
 
     }
 
