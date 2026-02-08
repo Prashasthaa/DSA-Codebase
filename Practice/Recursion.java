@@ -52,6 +52,18 @@ public class Recursion {
         return false;
     }
 
+    // first occurence of an element in an array
+    public static int firstOccurence(int arr[], int i, int key) {
+
+        if (arr[i] == key) {
+            return i;
+        }
+        if (i == arr.length - 1) {
+            return -1;
+        }
+        return firstOccurence(arr, i + 1, key);
+    }
+
     public static void main(String[] args) {
         int n = 5;
         // printDecreasingNum(n);
@@ -64,6 +76,8 @@ public class Recursion {
         int num1[] = { 1, 2, 3, 4, 5 };
         System.out.println(isSorted(num, 0));
         System.out.println(isSorted(num1, 0));
+
+        System.out.println(firstOccurence(num1, 0, 30));
 
     }
 
