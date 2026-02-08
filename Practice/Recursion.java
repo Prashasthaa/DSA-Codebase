@@ -64,6 +64,20 @@ public class Recursion {
         return firstOccurence(arr, i + 1, key);
     }
 
+    //// last occurence of an element in an array
+    public static int lastOccurence(int arr[], int i, int key) {
+        if (i == arr.length) {
+            return -1;
+        }
+
+        int isFound = lastOccurence(arr, i + 1, key);
+        if (isFound == -1 && arr[i] == key) {
+            return i;
+        }
+
+        return isFound;
+    }
+
     public static void main(String[] args) {
         int n = 5;
         // printDecreasingNum(n);
@@ -73,11 +87,12 @@ public class Recursion {
         // System.out.println(fibonacciNum(2));
 
         int num[] = { 1, 23, 34, 21, 353 };
-        int num1[] = { 1, 2, 3, 4, 5 };
+        int num1[] = { 1, 2, 3, 3, 4, 5 };
         System.out.println(isSorted(num, 0));
         System.out.println(isSorted(num1, 0));
 
         System.out.println(firstOccurence(num1, 0, 30));
+        System.out.println(lastOccurence(num1, 0, 30));
 
     }
 
