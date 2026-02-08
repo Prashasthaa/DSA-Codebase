@@ -78,6 +78,13 @@ public class Recursion {
         return isFound;
     }
 
+    public static int powerOfX(int x, int n) {
+        if (n == 0) {
+            return 1;
+        }
+        return x * powerOfX(x, n - 1);
+    }
+
     public static void main(String[] args) {
         int n = 5;
         // printDecreasingNum(n);
@@ -86,13 +93,15 @@ public class Recursion {
         // System.out.println(sum(n));
         // System.out.println(fibonacciNum(2));
 
-        int num[] = { 1, 23, 34, 21, 353 };
-        int num1[] = { 1, 2, 3, 3, 4, 5 };
-        System.out.println(isSorted(num, 0));
-        System.out.println(isSorted(num1, 0));
+        // int num[] = { 1, 23, 34, 21, 353 };
+        // int num1[] = { 1, 2, 3, 3, 4, 5 };
+        // System.out.println(isSorted(num, 0));
+        // System.out.println(isSorted(num1, 0));
 
-        System.out.println(firstOccurence(num1, 0, 30));
-        System.out.println(lastOccurence(num1, 0, 30));
+        // System.out.println(firstOccurence(num1, 0, 30));
+        // System.out.println(lastOccurence(num1, 0, 30));
+
+        System.out.println(powerOfX(5, 1));
 
     }
 
