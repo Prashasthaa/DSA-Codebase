@@ -85,6 +85,21 @@ public class Recursion {
         return x * powerOfX(x, n - 1);
     }
 
+    public static int optimizedPower(int x, int n) {
+        if (n == 0) {
+            return 1;
+        }
+        int halfPower = optimizedPower(x, n / 2);
+
+        int halfPowerSq = halfPower * halfPower;
+
+        //////// if nis odd
+        if (n % 2 != 0) {
+            halfPowerSq = x * halfPowerSq;
+        }
+        return halfPowerSq;
+    }
+
     public static void main(String[] args) {
         int n = 5;
         // printDecreasingNum(n);
@@ -102,7 +117,7 @@ public class Recursion {
         // System.out.println(lastOccurence(num1, 0, 30));
 
         System.out.println(powerOfX(5, 1));
-
+        System.out.println(optimizedPower(8, 2));
     }
 
 }
