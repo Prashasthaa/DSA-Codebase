@@ -100,6 +100,23 @@ public class Recursion {
         return halfPowerSq;
     }
 
+    public static int tilingProblem(int n) {// 2 X n {floor size}
+        // base case
+        if (n == 1 || n == 0) {
+            return 1;
+        }
+
+        // kaam
+        // vertical choice
+        int fnm1 = tilingProblem(n - 1);
+
+        // horizontal choice
+        int fnm2 = tilingProblem(n - 2);
+
+        int toWays = fnm1 + fnm2;
+        return toWays;
+    }
+
     public static void main(String[] args) {
         int n = 5;
         // printDecreasingNum(n);
@@ -116,8 +133,10 @@ public class Recursion {
         // System.out.println(firstOccurence(num1, 0, 30));
         // System.out.println(lastOccurence(num1, 0, 30));
 
-        System.out.println(powerOfX(5, 1));
-        System.out.println(optimizedPower(8, 2));
+        // System.out.println(powerOfX(5, 1));
+        // System.out.println(optimizedPower(8, 2));
+
+        System.out.println(tilingProblem(4));
     }
 
 }
