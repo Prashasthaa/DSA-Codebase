@@ -137,6 +137,28 @@ public class Recursion {
 
     }
 
+    public static int friendPairing(int n) {
+        // base case
+        if (n == 1 || n == 2) {
+            return n;
+        }
+
+        // single
+        int fnm1 = friendPairing(n - 1);
+
+        // pair
+        int fnm2 = friendPairing(n - 2);
+        int pairways = (n - 1) * fnm2;
+
+        // total ways
+        int totalways = fnm1 + pairways;
+
+        return totalways;
+
+        // single line
+        // return friendPairing(n - 1) + (n - 1) * friendPairing(n - 2);
+    }
+
     public static void main(String[] args) {
         int n = 5;
         // printDecreasingNum(n);
@@ -160,6 +182,8 @@ public class Recursion {
 
         String str = "prashastha";
         removeDuplicate(str, 0, new StringBuilder(""), new boolean[26]);
+
+        System.out.println(friendPairing(5));
     }
 
 }
