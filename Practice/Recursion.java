@@ -115,6 +115,9 @@ public class Recursion {
 
         int toWays = fnm1 + fnm2;
         return toWays;
+
+        // single line code
+        // return tilingProblem(n-1)+tilingProblem(n-2);
     }
 
     // Remove duplicates in a string
@@ -159,6 +162,19 @@ public class Recursion {
         // return friendPairing(n - 1) + (n - 1) * friendPairing(n - 2);
     }
 
+    public static void printBinaryString(int n, int lastPlace, String str) {
+        if (n == 0) {
+            System.out.println(str);
+            return;
+        }
+
+        printBinaryString(n - 1, 0, str + "0");
+
+        if (lastPlace == 0) {
+            printBinaryString(n - 1, 1, str + "1");
+        }
+    }
+
     public static void main(String[] args) {
         int n = 5;
         // printDecreasingNum(n);
@@ -180,10 +196,12 @@ public class Recursion {
 
         // System.out.println(tilingProblem(4));
 
-        String str = "prashastha";
-        removeDuplicate(str, 0, new StringBuilder(""), new boolean[26]);
+        // String str = "prashastha";
+        // removeDuplicate(str, 0, new StringBuilder(""), new boolean[26]);
 
-        System.out.println(friendPairing(5));
+        // System.out.println(friendPairing(5));
+
+        printBinaryString(3, 0, "");
     }
 
 }
