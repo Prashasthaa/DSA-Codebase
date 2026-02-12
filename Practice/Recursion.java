@@ -175,6 +175,17 @@ public class Recursion {
         }
     }
 
+    public static void allOccurrence(int nums[], int key, int i) {
+        if (nums.length == i) {
+            return;
+        }
+        if (nums[i] == key) {
+            System.out.print(i + " ");
+        }
+        allOccurrence(nums, key, i + 1);
+
+    }
+
     public static void main(String[] args) {
         int n = 5;
         // printDecreasingNum(n);
@@ -201,7 +212,10 @@ public class Recursion {
 
         // System.out.println(friendPairing(5));
 
-        printBinaryString(3, 0, "");
+        // printBinaryString(3, 0, "");
+
+        int nums[] = { 3, 2, 4, 5, 6, 2, 7, 2, 2 };
+        allOccurrence(nums, 2, 0);
     }
 
 }
