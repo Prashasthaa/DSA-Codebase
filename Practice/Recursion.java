@@ -225,6 +225,13 @@ public class Recursion {
         }
     }
 
+    public static int lengthOfString(String str) {
+        if (str == "") {
+            return 0;
+        }
+        return 1 + lengthOfString(str.substring(1));
+    }
+
     public static void main(String[] args) {
         int n = 5;
         // printDecreasingNum(n);
@@ -256,7 +263,10 @@ public class Recursion {
         // int nums[] = { 3, 2, 4, 5, 6, 2, 7, 2, 2 };
         // allOccurrence(nums, 2, 0);
 
-        convertToString(4567);
+        // convertToString(4567);
+
+        System.out.println(lengthOfString("null"));
+        System.out.println(lengthOfString("0"));
     }
 
 }
