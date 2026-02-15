@@ -233,7 +233,7 @@ public class Recursion {
     }
 
     public static void main(String[] args) {
-        int n = 5;
+        // int n = 5;
         // printDecreasingNum(n);
         // printIncreasingNum(n);
         // System.out.println(factorial(n));
@@ -265,8 +265,8 @@ public class Recursion {
 
         // convertToString(4567);
 
-        System.out.println(lengthOfString("null"));
-        System.out.println(lengthOfString("0"));
+        // System.out.println(lengthOfString("null"));
+        // System.out.println(lengthOfString("0"));
     }
 
 }
