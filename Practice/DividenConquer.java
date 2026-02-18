@@ -117,6 +117,40 @@ public class DividenConquer {
 
     }
 
+    public static int searchRotatedArray(int arr[], int tar, int si, int ei) {
+
+        while (ei >= si) {
+            int mid = (ei + (ei - si)) / 2;
+
+            if (arr[mid] == tar) {
+                return mid;
+            }
+
+            // Case-1=> mid on L1
+            if (arr[si] <= arr[mid]) {
+
+                // case-a
+                if (arr[si] <= tar && tar <= arr[mid]) {
+                    ei = mid - 1;
+                }
+                // case-b
+                else {
+                    si = mid + 1;
+                }
+            }
+            // case-2=> mid on L2
+            else {
+                if (arr[mid] <= tar && tar <= arr[ei]) {
+                    si = mid + 1;
+                } else {
+                    ei = mid - 1;
+                }
+            }
+
+        }
+        return -1;
+    }
+
     public static void main(String args[]) {
         int arr[] = { 5, 6, 7, 8, 1, 2, 3, 4 };
         // printArr(arr);
@@ -124,7 +158,9 @@ public class DividenConquer {
         // // quickSort(arr, 0, arr.length - 1);
         // printArr(arr);
 
-        int target = 40;
+        int target = 5;
         System.out.println(search(arr, target, 0, arr.length - 1));
+
+        System.out.println(searchRotatedArray(arr, target, 0, arr.length - 1));
     }
 }
