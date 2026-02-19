@@ -7,6 +7,13 @@ public class DividenConquer {
         System.out.println();
     }
 
+    public static void printArrString(String arr[]) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
     public static void mergeSort(int arr[], int si, int ei) {
         // base case
         if (si >= ei) {
@@ -151,16 +158,64 @@ public class DividenConquer {
         return -1;
     }
 
+    //////// Practice Questions//////////////
+    // Merge sort for string
+    public static void mergeSortString(String arr[], int si, int ei) {
+        // base case
+        if (si >= ei) {
+            return;
+        }
+
+        int mid = si + (ei - si) / 2;
+
+        mergeSortString(arr, si, mid);
+        mergeSortString(arr, mid + 1, ei);
+
+        mergeString(arr, si, mid, ei);
+    }
+
+    public static void mergeString(String arr[], int si, int mid, int ei) {
+        String temp[] = new String[ei - si + 1];
+        int i = si;
+        int j = mid + 1;
+        int k = 0;
+
+        while (i <= mid && j <= ei) {
+            if (arr[i].compareTo(arr[j]) < 0) {
+                temp[k++] = arr[i++];
+            } else {
+                temp[k++] = arr[j++];
+            }
+        }
+
+        while (i <= mid) {
+            temp[k++] = arr[i++];
+        }
+
+        while (j <= ei) {
+            temp[k++] = arr[j++];
+        }
+
+        for (k = 0, i = si; k < temp.length; k++, i++) {
+            arr[i] = temp[k];
+        }
+    }
+
     public static void main(String args[]) {
-        int arr[] = { 5, 6, 7, 8, 1, 2, 3, 4 };
+        // int arr[] = { 5, 6, 7, 8, 1, 2, 3, 4 };
         // printArr(arr);
         // // mergeSort(arr, 0, arr.length - 1);
         // // quickSort(arr, 0, arr.length - 1);
         // printArr(arr);
 
-        int target = 5;
-        System.out.println(search(arr, target, 0, arr.length - 1));
+        // int target = 5;
+        // System.out.println(search(arr, target, 0, arr.length - 1));
 
-        System.out.println(searchRotatedArray(arr, target, 0, arr.length - 1));
+        // System.out.println(searchRotatedArray(arr, target, 0, arr.length - 1));
+
+        String arr[] = { "sun", "earth", "mars", "mercury" };
+        printArrString(arr);
+        mergeSortString(arr, 0, arr.length - 1);
+        printArrString(arr);
     }
 }
