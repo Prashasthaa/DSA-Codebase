@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class DividenConquer {
 
     public static void printArr(int arr[]) {
@@ -201,6 +203,59 @@ public class DividenConquer {
         }
     }
 
+    public static int majorityElement(int arr[]) {
+        int majorityCount = (arr.length - 1) / 2;
+
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            count = 0;
+            for (int j = 0; j < arr.length; j++) {
+                if (arr[i] == arr[j]) {
+                    count++;
+                }
+            }
+            if (count > majorityCount) {
+                return arr[i];
+            }
+        }
+        return -1;
+    }
+
+    public static int majorityElementOptimized(int arr[]) {
+        Arrays.sort(arr);
+        int freq = 1;
+        int majorityCount = (arr.length - 1) / 2;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] == arr[i - 1]) {
+                freq++;
+            } else {
+                freq = 1;
+            }
+            if (freq > majorityCount) {
+                return arr[i];
+            }
+        }
+        return -1;
+    }
+
+    /// moores voting alogrithm
+
+    public static int majorityCountMoore(int arr[]) {
+        int freq = 0, ans = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (freq == 0) {
+                ans = arr[i];
+
+            }
+            if (ans == arr[i]) {
+                freq++;
+            } else {
+                freq--;
+            }
+        }
+        return ans;
+    }
+
     public static void main(String args[]) {
         // int arr[] = { 5, 6, 7, 8, 1, 2, 3, 4 };
         // printArr(arr);
@@ -213,9 +268,14 @@ public class DividenConquer {
 
         // System.out.println(searchRotatedArray(arr, target, 0, arr.length - 1));
 
-        String arr[] = { "sun", "earth", "mars", "mercury" };
-        printArrString(arr);
-        mergeSortString(arr, 0, arr.length - 1);
-        printArrString(arr);
+        // String arr[] = { "sun", "earth", "mars", "mercury" };
+        // printArrString(arr);
+        // mergeSortString(arr, 0, arr.length - 1);
+        // printArrString(arr);
+
+        int nums[] = { 3, 2, 3 };
+        System.out.println(majorityElement(nums));
+        System.out.println(majorityElementOptimized(nums));
+        System.out.println(majorityCountMoore(nums));
     }
 }
