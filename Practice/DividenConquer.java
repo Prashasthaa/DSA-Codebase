@@ -256,6 +256,21 @@ public class DividenConquer {
         return ans;
     }
 
+    public static int inversionCount(int arr[]) {
+
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    sum++;
+                }
+            }
+
+        }
+        return sum;
+    }
+
     public static void main(String args[]) {
         // int arr[] = { 5, 6, 7, 8, 1, 2, 3, 4 };
         // printArr(arr);
@@ -273,9 +288,12 @@ public class DividenConquer {
         // mergeSortString(arr, 0, arr.length - 1);
         // printArrString(arr);
 
-        int nums[] = { 3, 2, 3 };
-        System.out.println(majorityElement(nums));
-        System.out.println(majorityElementOptimized(nums));
-        System.out.println(majorityCountMoore(nums));
+        // int nums[] = { 3, 2, 3 };
+        // System.out.println(majorityElement(nums));
+        // System.out.println(majorityElementOptimized(nums));
+        // System.out.println(majorityCountMoore(nums));
+
+        int arr[] = { 2, 3, 4, 5, 6 };
+        System.out.println(inversionCount(arr));
     }
 }
