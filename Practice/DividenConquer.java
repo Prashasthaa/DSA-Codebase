@@ -334,7 +334,7 @@ public class DividenConquer {
         // System.out.println(majorityElementOptimized(nums));
         // System.out.println(majorityCountMoore(nums));
 
-        int arr[] = { 2, 4, 6, 1, 5, 3 };
+        int arr[] = { 2, 4, 6, 1, 5, 3, 2 };
         System.out.println(inversionCountBrute(arr));
         System.out.println(inversionCount(arr, 0, arr.length - 1));
         System.out.println(inversionCount(arr, 0, arr.length - 1));
