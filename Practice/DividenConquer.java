@@ -256,19 +256,60 @@ public class DividenConquer {
         return ans;
     }
 
-    public static int inversionCount(int arr[]) {
+    public static int inversionCountBrute(int arr[]) {
 
         int sum = 0;
         for (int i = 0; i < arr.length; i++) {
 
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i] > arr[j]) {
+            for (int j = 0; j < i; j++) {
+                if (arr[j] > arr[i]) {
                     sum++;
                 }
             }
 
         }
         return sum;
+    }
+
+    public static int inversionCount(int arr[], int si, int ei) {
+        if (si >= ei) {
+            return 0;
+        }
+
+        int mid = si + (ei - si) / 2;
+        int leftInversionCount = inversionCount(arr, si, mid);
+
+        int rightInversionCount = inversionCount(arr, mid + 1, ei);
+        int crossInversionCount = crossInversionCount(arr, si, mid, ei);
+
+        return leftInversionCount + rightInversionCount + crossInversionCount;
+    }
+
+    public static int crossInversionCount(int arr[], int si, int mid, int ei) {
+        int count = 0;
+        int temp[] = new int[ei - si + 1];
+        int i = si, j = mid + 1;
+        int index = 0;
+
+        while (i <= mid && j <= ei) {
+            if (arr[i] > arr[j]) {
+                count += (mid - i + 1);
+                temp[index++] = arr[j++];
+            } else {
+                temp[index++] = arr[i++];
+            }
+        }
+        while (i <= mid) {
+            temp[index++] = arr[i++];
+        }
+        while (j <= ei) {
+            temp[index++] = arr[j++];
+        }
+        for (int x = 0; x < temp.length; x++) {
+            arr[si + x] = temp[x];
+        }
+
+        return count;
     }
 
     public static void main(String args[]) {
@@ -293,7 +334,9 @@ public class DividenConquer {
         // System.out.println(majorityElementOptimized(nums));
         // System.out.println(majorityCountMoore(nums));
 
-        int arr[] = { 2, 3, 4, 5, 6 };
-        System.out.println(inversionCount(arr));
+        int arr[] = { 2, 4, 6, 1, 5, 3 };
+        System.out.println(inversionCountBrute(arr));
+        System.out.println(inversionCount(arr, 0, arr.length - 1));
+        System.out.println(inversionCount(arr, 0, arr.length - 1));
     }
 }
