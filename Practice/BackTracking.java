@@ -42,6 +42,30 @@ public class BackTracking {
 
     }
 
+    public static void findSubsetStringBuilder(String str, StringBuilder ans, int i) {
+        // base case
+        if (i == str.length()) {
+            if (ans.length() == 0) {
+                System.out.println("null");
+
+            } else {
+                System.out.println(ans);
+
+            }
+            return;
+        }
+
+        // recursion
+        // Yes choice
+        ans.append(str.charAt(i));
+        findSubsetStringBuilder(str, ans, i + 1);
+
+        // No Choice
+        ans.deleteCharAt(ans.length() - 1);
+        findSubsetStringBuilder(str, ans, i + 1);
+
+    }
+
     public static void main(String args[]) {
         // int arr[] = new int[5];
         // changeArr(arr, 0, 1);
@@ -49,6 +73,7 @@ public class BackTracking {
 
         String str = "abc";
         findSubsets(str, "", 0);
+        findSubsetStringBuilder(str, new StringBuilder(), 0);
 
     }
 }
