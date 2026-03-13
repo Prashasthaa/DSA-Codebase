@@ -66,14 +66,33 @@ public class BackTracking {
 
     }
 
+    public static void findPermutation(String str, String ans) {
+        // base case
+        if (str.length() == 0) {
+            System.out.println(ans);
+            return;
+
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            char curr = str.charAt(i);
+            String newStr = str.substring(0, i) + str.substring(i + 1);
+            findPermutation(newStr, ans + curr);
+
+        }
+    }
+
     public static void main(String args[]) {
         // int arr[] = new int[5];
         // changeArr(arr, 0, 1);
         // printArr(arr);
 
+        // String str = "abc";
+        // findSubsets(str, "", 0);
+        // findSubsetStringBuilder(str, new StringBuilder(), 0);
+
         String str = "abc";
-        findSubsets(str, "", 0);
-        findSubsetStringBuilder(str, new StringBuilder(), 0);
+        findPermutation(str, "");
 
     }
 }
