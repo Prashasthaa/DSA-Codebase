@@ -83,7 +83,7 @@ public class BackTracking {
     }
 
     public static void printBoard(char board[][]) {
-        System.out.println("--------n Queen Board---------");
+        System.out.println("--------Chess Board---------");
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board.length; j++) {
                 System.out.print(board[i][j] + " ");
@@ -135,6 +135,54 @@ public class BackTracking {
         }
     }
 
+    public static boolean isSafeKnight(char board[][], int row, int col) {
+        // top left
+        if (row - 2 >= 0 && col - 1 >= 0) {
+            if (board[row - 2][col - 1] == 'K') {
+                return false;
+            }
+        }
+        // top right
+
+        if (row - 2 >= 0 && col + 1 < board.length) {
+            if (board[row - 2][col + 1] == 'K') {
+                return false;
+            }
+        }
+
+        // side left
+        if (row - 1 >= 0 && col - 2 >= 0) {
+            if (board[row - 1][col - 2] == 'K') {
+                return false;
+            }
+        }
+
+        // side rigth
+        if (row - 1 >= 0 && col + 2 < board.length) {
+            if (board[row - 1][col + 2] == 'K') {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+
+    public static void nKnights(char board[][], int row) {
+        if (row == board.length) {
+            printBoard(board);
+            return;
+        }
+
+        for (int j = 0; j < board.length; j++) {
+            if (isSafeKnight(board, row, j)) {
+                board[row][j] = 'K';
+                nKnights(board, row + 1);
+                board[row][j] = '.';
+            }
+        }
+    }
+
     public static void main(String args[]) {
         // int arr[] = new int[5];
         // changeArr(arr, 0, 1);
@@ -147,7 +195,7 @@ public class BackTracking {
         // String str = "abc";
         // findPermutation(str, "");
 
-        int n = 4;
+        int n = 3;
         char board[][] = new char[n][n];
 
         for (int i = 0; i < n; i++) {
@@ -157,7 +205,8 @@ public class BackTracking {
             }
         }
 
-        nQueens(board, 0);
+        // nQueens(board, 0);
 
+        nKnights(board, 0);
     }
 }
