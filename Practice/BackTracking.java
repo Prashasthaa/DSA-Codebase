@@ -207,6 +207,6 @@ public class BackTracking {
 
         // nQueens(board, 0);
 
-        nKnights(board, 0);
+        // nKnights(board, 0);
     }
 }
