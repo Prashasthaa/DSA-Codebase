@@ -186,6 +186,20 @@ public class BackTracking {
         }
     }
 
+    public static int gridWays(int i, int j, int n, int m) {
+
+        // base case
+        if (i == n - 1 && j == m - 1) {
+            return 1;
+        } else if (i == n || j == m) {
+            return 0;
+        }
+
+        int w1 = gridWays(i + 1, j, n, m);
+        int w2 = gridWays(i, j + 1, n, m);
+        return w1 + w2;
+    }
+
     public static void main(String args[]) {
         // int arr[] = new int[5];
         // changeArr(arr, 0, 1);
@@ -198,20 +212,23 @@ public class BackTracking {
         // String str = "abc";
         // findPermutation(str, "");
 
-        int n = 5;
-        char board[][] = new char[n][n];
+        // int n = 5;
+        // char board[][] = new char[n][n];
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                board[i][j] = '.';
+        // for (int i = 0; i < n; i++) {
+        // for (int j = 0; j < n; j++) {
+        // board[i][j] = '.';
 
-            }
+        // }
 
-        }
+        // }
 
-        nQueens(board, 0);
-        System.out.println("total number of counts:" + count);
+        // nQueens(board, 0);
+        // System.out.println("total number of counts:" + count);
 
         // nKnights(board, 0);
+
+        int n = 4, m = 4;
+        System.out.println("total grid ways = " + gridWays(0, 0, n, m));
     }
 }
