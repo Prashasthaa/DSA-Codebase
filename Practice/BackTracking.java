@@ -123,6 +123,7 @@ public class BackTracking {
         // base case
         if (row == board.length) {
             printBoard(board);
+            count++;
             return;
         }
 
@@ -134,6 +135,8 @@ public class BackTracking {
             }
         }
     }
+
+    static int count = 0;
 
     public static boolean isSafeKnight(char board[][], int row, int col) {
         // top left
@@ -195,7 +198,7 @@ public class BackTracking {
         // String str = "abc";
         // findPermutation(str, "");
 
-        int n = 3;
+        int n = 5;
         char board[][] = new char[n][n];
 
         for (int i = 0; i < n; i++) {
@@ -203,9 +206,11 @@ public class BackTracking {
                 board[i][j] = '.';
 
             }
+
         }
 
-        // nQueens(board, 0);
+        nQueens(board, 0);
+        System.out.println("total number of counts:" + count);
 
         // nKnights(board, 0);
     }
