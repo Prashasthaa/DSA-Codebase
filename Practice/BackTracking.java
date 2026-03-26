@@ -273,6 +273,34 @@ public class BackTracking {
         return false;
     }
 
+    public static boolean isSafeMaze(int maze[][], int row, int col) {
+        return (row >= 0 && row < maze.length && col >= 0 && col < maze.length && maze[row][col] == 1);
+    }
+
+    public static boolean ratMaze(int maze[][], int newMaze[][], int row, int col) {
+
+        if (row == maze.length - 1 && col == maze.length - 1 && maze[row][col] == 1) {
+
+            printBoard(newMaze);
+            return true;
+        }
+
+        if (isSafeMaze(maze, row, col) == true) {
+            if (newMaze[row][col] == 1)
+                return false;
+            newMaze[row][col] = 1;
+
+            if (ratMaze(maze, newMaze, row + 1, col))
+                return true;
+            if (ratMaze(maze, newMaze, row, col + 1))
+                return true;
+            newMaze[row][col] = 0;
+            return false;
+        }
+        return false;
+
+    }
+
     public static void main(String args[]) {
         // int arr[] = new int[5];
         // changeArr(arr, 0, 1);
@@ -304,21 +332,35 @@ public class BackTracking {
         // int n = 4, m = 4;
         // System.out.println("total grid ways = " + gridWays(0, 0, n, m));
 
-        int sudoku[][] = { { 0, 0, 8, 0, 0, 0, 0, 0, 0 },
-                { 4, 9, 0, 1, 5, 7, 0, 0, 2 },
-                { 0, 0, 3, 0, 0, 4, 1, 9, 0 },
-                { 1, 8, 5, 0, 6, 0, 0, 2, 0 },
-                { 0, 0, 0, 0, 2, 0, 0, 6, 0 },
-                { 9, 6, 0, 4, 0, 5, 3, 0, 0 },
-                { 0, 3, 0, 0, 7, 2, 0, 0, 4 },
-                { 0, 4, 9, 0, 3, 0, 0, 5, 7 },
-                { 8, 2, 7, 0, 0, 9, 0, 1, 3 } };
+        // int sudoku[][] = { { 0, 0, 8, 0, 0, 0, 0, 0, 0 },
+        // { 4, 9, 0, 1, 5, 7, 0, 0, 2 },
+        // { 0, 0, 3, 0, 0, 4, 1, 9, 0 },
+        // { 1, 8, 5, 0, 6, 0, 0, 2, 0 },
+        // { 0, 0, 0, 0, 2, 0, 0, 6, 0 },
+        // { 9, 6, 0, 4, 0, 5, 3, 0, 0 },
+        // { 0, 3, 0, 0, 7, 2, 0, 0, 4 },
+        // { 0, 4, 9, 0, 3, 0, 0, 5, 7 },
+        // { 8, 2, 7, 0, 0, 9, 0, 1, 3 } };
 
-        if (sudokoSolver(sudoku, 0, 0)) {
-            printBoard(sudoku);
+        // if (sudokoSolver(sudoku, 0, 0)) {
+        // printBoard(sudoku);
 
+        // } else {
+        // System.out.println("Solution Does not exist ");
+        // }
+
+        int maze[][] = { { 1, 0, 0, 0 }, { 1, 1, 0, 1 }, { 0, 1, 0, 0 }, { 1, 1, 1, 1 } };
+
+        int newMaze[][] = new int[maze.length][maze.length];
+        for (int i = 0; i < maze.length; i++) {
+            for (int j = 0; j < maze.length; j++) {
+                newMaze[i][j] = 0;
+            }
+        }
+        if (ratMaze(maze, newMaze, 0, 0)) {
+            System.out.println("solution exist");
         } else {
-            System.out.println("Solution Does not exist ");
+            System.out.println("Solution does not exist");
         }
     }
 }
