@@ -301,7 +301,42 @@ public class BackTracking {
 
     }
 
-    
+    static int dr[] = { -1, 1, 0, 0 };
+    static int dc[] = { 0, 0, -1, 1 };
+    static char dir[] = { 'U', 'D', 'L', 'R' };
+
+    public static void rec(int[][] maze, int row, int col, String path, int n) {
+        // base case
+        // out of boundary
+        if (row < 0 || col < 0 || row >= n || col >= n) {
+
+            return;
+        }
+
+        // check whether visited or blocked
+        if (maze[row][col] == -1 || maze[row][col] == 1) {
+            return;
+        }
+
+        // reached target
+        if (row == n - 1 && col == n - 1) {
+            System.out.println(path);
+            return;
+        }
+
+        // visited
+        maze[row][col] = -1;
+
+        for (int idx = 0; idx < 4; idx++) {
+            int nr = row + dr[idx];
+            int nc = col + dc[idx];
+            rec(maze, nr, nc, path + dir[idx], n);
+        }
+
+        // make unvisited
+        maze[row][col] = 0;
+
+    }
 
     public static void main(String args[]) {
         // int arr[] = new int[5];
@@ -351,18 +386,23 @@ public class BackTracking {
         // System.out.println("Solution Does not exist ");
         // }
 
-        int maze[][] = { { 1, 0, 0, 0 }, { 1, 1, 0, 1 }, { 0, 1, 0, 0 }, { 1, 1, 1, 1 } };
+        // int maze[][] = { { 1, 0, 0, 0 }, { 1, 1, 0, 1 }, { 0, 1, 0, 0 }, { 1, 1, 1, 1
+        // } };
 
-        int newMaze[][] = new int[maze.length][maze.length];
-        for (int i = 0; i < maze.length; i++) {
-            for (int j = 0; j < maze.length; j++) {
-                newMaze[i][j] = 0;
-            }
-        }
-        if (ratMaze(maze, newMaze, 0, 0)) {
-            System.out.println("solution exist");
-        } else {
-            System.out.println("Solution does not exist");
-        }
+        // int newMaze[][] = new int[maze.length][maze.length];
+        // for (int i = 0; i < maze.length; i++) {
+        // for (int j = 0; j < maze.length; j++) {
+        // newMaze[i][j] = 0;
+        // }
+        // }
+        // if (ratMaze(maze, newMaze, 0, 0)) {
+        // System.out.println("solution exist");
+        // } else {
+        // System.out.println("Solution does not exist");
+        // }
+
+        int maze[][] = { { 0, 0, 0, 1 }, { 0, 1, 0, 1 }, { 0, 0, 0, 1 }, { 0, 1, 0, 0 } };
+
+        rec(maze, 0, 0, "", maze.length);
     }
 }
