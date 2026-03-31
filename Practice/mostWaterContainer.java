@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class mostWaterContainer {
 
-    public static void maxAreaBrute(ArrayList<Integer> heigth) {
+    public static void maxAreaBrute(ArrayList<Integer> heigth) { // O(n^2)
 
         int maxArea = 0;
         for (int i = 0; i < heigth.size() - 1; i++) {
@@ -15,6 +15,30 @@ public class mostWaterContainer {
 
         }
         System.out.println("Maximum Area=" + maxArea);
+    }
+
+    // two Pointer approach
+    public static void storeWater(ArrayList<Integer> height) {
+        int maxWater = 0;
+        int lp = 0;
+        int rp = height.size() - 1;
+
+        while (lp < rp) {
+            int minHeigth = Math.min(height.get(rp), height.get(lp));
+            int width = rp - lp;
+            int currArea = width * minHeigth;
+            maxWater = Math.max(maxWater, currArea);
+
+            if (height.get(rp) > height.get(lp)) {
+                lp++;
+            }
+
+            else {// if (height.get(rp) < height.get(lp)) {
+                rp--;
+            }
+        }
+        System.out.println("Maximum Water=" + maxWater);
+
     }
 
     public static void main(String[] args) {
@@ -32,5 +56,6 @@ public class mostWaterContainer {
         height.add(7);
 
         maxAreaBrute(height);
+        storeWater(height);
     }
 }
