@@ -10,6 +10,20 @@ public class ArrayLists {
         list.set(idx2, temp);
     }
 
+    public static boolean isMonotonic(ArrayList<Integer> nums) {
+        boolean isIncreasing = true;
+        boolean isDecreasing = true;
+        for (int i = 1; i < nums.size(); i++) {
+            if (nums.get(i) > nums.get(i - 1)) {
+                isDecreasing = false;
+            }
+            if (nums.get(i) < nums.get(i - 1)) {
+                isIncreasing = false;
+            }
+        }
+        return isDecreasing || isIncreasing;
+    }
+
     public static void main(String args[]) {
 
         ArrayList<Integer> list = new ArrayList<>();
@@ -125,5 +139,12 @@ public class ArrayLists {
             }
             System.out.print("} ");
         }
+
+        ArrayList<Integer> nums = new ArrayList<>();
+        nums.add(1);
+        nums.add(2);
+        nums.add(2);
+        nums.add(3);
+        System.out.println(isMonotonic(nums));
     }
 }
