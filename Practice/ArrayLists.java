@@ -24,6 +24,23 @@ public class ArrayLists {
         return isDecreasing || isIncreasing;
     }
 
+    public static ArrayList<Integer> lonely(ArrayList<Integer> nums) {
+        ArrayList<Integer> result = new ArrayList<>();
+
+        for (int i = 0; i < nums.size(); i++) {
+
+            int prev = nums.get(i) - 1;
+            int post = nums.get(i) + 1;
+
+            if (!(nums.contains(prev) || nums.contains(post))) {
+                System.out.println("ddf");
+                result.add(nums.get(i));
+            }
+        }
+
+        return result;
+    }
+
     public static void main(String args[]) {
 
         ArrayList<Integer> list = new ArrayList<>();
@@ -146,5 +163,13 @@ public class ArrayLists {
         nums.add(2);
         nums.add(3);
         System.out.println(isMonotonic(nums));
+
+        ArrayList<Integer> nums1 = new ArrayList<>();
+        nums1.add(10);
+        nums1.add(6);
+        nums1.add(5);
+        nums1.add(8);
+        // System.out.println(nums1);
+        System.out.println(lonely(nums1));
     }
 }
