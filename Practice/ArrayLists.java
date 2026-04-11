@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -39,6 +40,18 @@ public class ArrayLists {
         }
 
         return result;
+    }
+
+    public static ArrayList<Integer> lonely2(int nums[]) {
+        Arrays.sort(nums);
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for (int i = 1; i < nums.length - 1; i++) {
+            if ((i == 0 || nums[i] - nums[i - 1] > 1) && (i == nums.length - 1 || nums[i + 1] - nums[i] > 1)) {
+                list.add(nums[i]);
+            }
+        }
+        return list;
     }
 
     public static void main(String args[]) {
@@ -171,5 +184,6 @@ public class ArrayLists {
         nums1.add(8);
         // System.out.println(nums1);
         System.out.println(lonely(nums1));
+
     }
 }
