@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ArrayLists {
 
@@ -52,6 +54,28 @@ public class ArrayLists {
             }
         }
         return list;
+    }
+
+    public int mostFrequent(int[] nums, int key) {
+        int n = nums.length;
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < n - 1; i++) {
+            if (nums[i] == key) {
+                map.put(nums[i + 1], map.getOrDefault(nums[i + 1], 0) + 1);
+            }
+        }
+
+        int freq = Integer.MIN_VALUE;
+
+        int ans = 0;
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getValue() > freq) {
+                ans = entry.getKey();
+                freq = entry.getValue();
+            }
+        }
+        return ans;
     }
 
     public static void main(String args[]) {
