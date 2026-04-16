@@ -169,32 +169,66 @@ public class LinkedList {
         head = prev;
     }
 
+    public void deleteNFromEnd(int n) {
+        int sz = 0;
+        Node temp = head;
+        while (temp != null) {
+            temp = temp.next;
+            sz++;
+        }
+
+        if (n == sz) {
+            head = head.next;
+            return;
+        }
+
+        int i = 1;
+        int findNth = sz - n;
+        Node prev = head;
+        while (i < findNth) {
+            prev = prev.next;
+            i++;
+        }
+        prev.next = prev.next.next;
+        return;
+    }
+
     public static void main(String[] args) {
 
         LinkedList ll = new LinkedList();
-        ll.print();
-        ll.addFirst(1);
-        ll.print();
+        // ll.print();
+        // ll.addFirst(1);
+        // ll.print();
+        // ll.addFirst(2);
+        // ll.print();
+        // ll.addLast(3);
+        // ll.print();
+        // ll.addLast(4);
+        // ll.print();
+        // ll.add(2, 9);
+        // ll.print();
+        // System.out.println(ll.size);
+        // System.out.println(ll.removeFirst());
+        // System.out.println(ll.size);
+        // ll.print();
+        // System.out.println(ll.removeLast());
+        // System.out.println(ll.size);
+        // ll.print();
+        // System.out.println(ll.itrSearch(3));
+        // System.out.println(ll.itrSearch(7));
+        // System.out.println(ll.recSearch(3));
+        // System.out.println(ll.recSearch(7));
+        // ll.reverse();
+        // ll.print();
+
         ll.addFirst(2);
-        ll.print();
-        ll.addLast(3);
-        ll.print();
+        ll.addFirst(1);
         ll.addLast(4);
+        ll.addLast(5);
+        ll.add(2, 3);
         ll.print();
-        ll.add(2, 9);
-        ll.print();
-        System.out.println(ll.size);
-        System.out.println(ll.removeFirst());
-        System.out.println(ll.size);
-        ll.print();
-        System.out.println(ll.removeLast());
-        System.out.println(ll.size);
-        ll.print();
-        System.out.println(ll.itrSearch(3));
-        System.out.println(ll.itrSearch(7));
-        System.out.println(ll.recSearch(3));
-        System.out.println(ll.recSearch(7));
-        ll.reverse();
+
+        ll.deleteNFromEnd(3);
         ll.print();
     }
 }
