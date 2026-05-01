@@ -1,3 +1,5 @@
+package classRoom;
+
 public class Recursion {
     public static void printDecreasingNum(int n) {
         System.out.println(n + " ");

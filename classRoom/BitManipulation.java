@@ -1,3 +1,5 @@
+package classRoom;
+
 public class BitManipulation {
 
     public static void oddOrEven(int num) {

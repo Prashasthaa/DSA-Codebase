@@ -1,3 +1,5 @@
+package classRoom;
+
 import java.util.LinkedList;
 
 public class javaCollectionFramework {
