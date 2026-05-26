@@ -375,6 +375,67 @@ public class LinkedList {
 
     }
 
+    public void swap(int x, int y) {
+        if (head == null) {
+            return;
+        }
+        if (x == y) {
+            return;
+        }
+        Node currX = head;
+        Node prevX = null;
+        while (currX != null && currX.data != x) {
+            prevX = currX;
+            currX = currX.next;
+        }
+
+        Node currY = head;
+        Node prevY = null;
+        while (currY != null && currY.data != y) {
+            prevY = currY;
+            currY = currY.next;
+        }
+
+        if (currX == null || currY == null)
+            return;
+
+        // if (prevX != null) {
+        // prevX.next = currY;
+
+        // } else {
+
+        // head = currY;
+        // }
+
+        // if (prevY != null) {
+        // prevY.next = currX;
+        // } else {
+        // head = currX;
+
+        // }
+
+        if (prevX == null) {
+
+            head = currY;
+
+        } else {
+
+            prevX.next = currY;
+        }
+
+        if (prevY == null) {
+            head = currX;
+        } else {
+
+            prevY.next = currX;
+
+        }
+
+        Node temp = currX.next;
+        currX.next = currY.next;
+        currY.next = temp;
+    }
+
     public static void main(String[] args) {
 
         // LinkedList ll = new LinkedList();
@@ -426,16 +487,19 @@ public class LinkedList {
         // System.out.println(isCycle());
 
         LinkedList ll = new LinkedList();
-        ll.addFirst(1);
-        ll.addFirst(2);
-        ll.addFirst(3);
-        ll.addFirst(4);
         ll.addFirst(5);
+        ll.addFirst(4);
+        ll.addFirst(3);
+        ll.addFirst(2);
+        ll.addFirst(1);
 
         ll.print();
 
         // ll.head = ll.mergeSort(ll.head);
-        ll.zigZag();
+        // ll.zigZag();
+
+        ll.swap(2, 4);
         ll.print();
+
     }
 }
