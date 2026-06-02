@@ -1,4 +1,3 @@
-package classRoom;
 
 /* Structure of a link list node
 class Node{

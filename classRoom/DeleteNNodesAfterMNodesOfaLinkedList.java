@@ -1,4 +1,3 @@
-package classRoom;
 
 public class DeleteNNodesAfterMNodesOfaLinkedList {
     static void linkdelete(Node head, int n, int m) {

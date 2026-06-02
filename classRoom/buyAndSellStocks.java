@@ -1,4 +1,3 @@
-package classRoom;
 
 public class buyAndSellStocks {
     public static int bestBuyAndSellStocks(int price[]) {

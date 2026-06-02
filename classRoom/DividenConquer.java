@@ -1,5 +1,3 @@
-package classRoom;
-
 import java.util.Arrays;
 
 public class DividenConquer {
