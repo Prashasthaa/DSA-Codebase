@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class StackB {
     static class StackArrayList {
@@ -98,7 +98,18 @@ public class StackB {
         // s.pop();
         // }
 
-        StackLinkedList s = new StackLinkedList();
+        // StackLinkedList s = new StackLinkedList();
+
+        // s.push(1);
+        // s.push(2);
+        // s.push(3);
+
+        // while (!s.isEmpty()) {
+        // System.out.println(s.peek());
+        // s.pop();
+        // }
+
+        Stack<Integer> s = new Stack<>();
 
         s.push(1);
         s.push(2);
