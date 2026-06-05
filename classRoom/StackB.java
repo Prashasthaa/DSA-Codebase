@@ -150,6 +150,22 @@ public class StackB {
         }
     }
 
+    public static void nextGreaterElement(int[] input, int[] output) {
+        Stack<Integer> s = new Stack<>();
+
+        for (int i = input.length - 1; i >= 0; i--) {
+            while (!s.isEmpty() && input[s.peek()] <= input[i]) {
+                s.pop();
+            }
+            if (s.isEmpty()) {
+                output[i] = -1;
+            } else {
+                output[i] = input[s.peek()];
+            }
+            s.push(i);
+        }
+    }
+
     public static void main(String args[]) {
 
         // StackArrayList s = new StackArrayList();
@@ -207,13 +223,22 @@ public class StackB {
         // reverseStack(s);
         // printStack(s);
 
-        // Question 4 stock span problem
-        int stocks[] = { 100, 80, 60, 70, 60, 85, 100 };
-        int span[] = new int[stocks.length];
-        stockSpan(stocks, span);
+        // // Question 4 stock span problem
+        // int stocks[] = { 100, 80, 60, 70, 60, 85, 100 };
+        // int span[] = new int[stocks.length];
+        // stockSpan(stocks, span);
 
-        for (int i = 0; i < span.length; i++) {
-            System.out.println(span[i] + " ");
+        // for (int i = 0; i < span.length; i++) {
+        // System.out.println(span[i] + " ");
+        // }
+
+        // Question 5 next greater element
+        int input[] = { 6, 8, 0, 1, 3 };
+        int output[] = new int[input.length];
+        nextGreaterElement(input, output);
+
+        for (int i = 0; i < output.length; i++) {
+            System.out.println(output[i] + " ");
         }
 
     }
