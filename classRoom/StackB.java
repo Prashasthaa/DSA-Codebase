@@ -166,6 +166,35 @@ public class StackB {
         }
     }
 
+    public static boolean isValid(String str) {
+        Stack<Character> s = new Stack<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+
+            // opening
+            if (ch == '(' || ch == '{' || ch == '[') {
+                s.push(ch);
+            } else {
+                // closing
+                if (s.isEmpty()) {
+                    return false;
+                }
+                if ((s.peek() == '(' && ch == ')')
+                        || (s.peek() == '[' && ch == ']')
+                        || (s.peek() == '{' && ch == '}')) {
+                    s.pop();
+                } else {
+                    return false;
+                }
+            }
+        }
+        if (s.isEmpty()) {
+            return true;
+        }
+        return false;
+    }
+
     public static void main(String args[]) {
 
         // StackArrayList s = new StackArrayList();
@@ -232,14 +261,18 @@ public class StackB {
         // System.out.println(span[i] + " ");
         // }
 
-        // Question 5 next greater element
-        int input[] = { 6, 8, 0, 1, 3 };
-        int output[] = new int[input.length];
-        nextGreaterElement(input, output);
+        // // Question 5 next greater element
+        // int input[] = { 6, 8, 0, 1, 3 };
+        // int output[] = new int[input.length];
+        // nextGreaterElement(input, output);
 
-        for (int i = 0; i < output.length; i++) {
-            System.out.println(output[i] + " ");
-        }
+        // for (int i = 0; i < output.length; i++) {
+        // System.out.println(output[i] + " ");
+        // }
+
+        // Question 6 => valid parenthness
+        String str = "({}[][)[]";
+        System.out.println(isValid(str));
 
     }
 }
