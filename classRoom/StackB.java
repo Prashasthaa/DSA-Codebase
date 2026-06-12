@@ -195,6 +195,29 @@ public class StackB {
         return false;
     }
 
+    public static boolean isDuplicate(String str) { // O(n)
+        Stack<Character> s = new Stack<>();
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+
+            // closing
+            if (ch == ')') {
+                int count = 0;
+                while (s.peek() != '(') {
+                    s.pop();
+                    count++;
+                }
+                if (count < 1) {
+                    return true;// duplicate exists
+                }
+                s.pop();
+            } else {
+                s.push(ch);
+            }
+        }
+        return false;
+    }
+
     public static void main(String args[]) {
 
         // StackArrayList s = new StackArrayList();
@@ -270,9 +293,13 @@ public class StackB {
         // System.out.println(output[i] + " ");
         // }
 
-        // Question 6 => valid parenthness
-        String str = "({}[][)[]";
-        System.out.println(isValid(str));
+        // // Question 6 => valid parenthness
+        // String str = "({}[][)[]";
+        // System.out.println(isValid(str));
+
+        // Question 7 => Duplicate parentheses
+        String str = "(((a+b)+(c+d)))";
+        System.out.println(isDuplicate(str));
 
     }
 }
