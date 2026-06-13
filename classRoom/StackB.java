@@ -218,6 +218,75 @@ public class StackB {
         return false;
     }
 
+    public static void maxArea(int arr[]) {
+        int maxArea = 0;
+        int nsr[] = new int[arr.length];
+        int nsl[] = new int[arr.length];
+
+        // next smaller right
+        Stack<Integer> s = new Stack<>();
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+            while (!s.isEmpty() && arr[s.peek()] >= arr[i]) {
+                s.pop();
+            }
+
+            if (s.isEmpty()) {
+                nsr[i] = arr.length;
+            } else {
+                nsr[i] = s.peek();
+            }
+            s.push(i);
+        }
+        // next smaller left
+        s = new Stack<>();
+
+        for (int i = 0; i < arr.length; i++) {
+            while (!s.isEmpty() && arr[s.peek()] >= arr[i]) {
+                s.pop();
+            }
+
+            if (s.isEmpty()) {
+                nsl[i] = -1;
+            } else {
+                nsl[i] = s.peek();
+            }
+            s.push(i);
+        }
+        // curr area: width=j-i-1 = nsr[i]-nsl[j]-1
+        for (int i = 0; i < arr.length; i++) {
+            int height = arr[i];
+            int width = nsr[i] - nsl[i] - 1;
+            int area = height * width;
+            maxArea = Math.max(maxArea, area);
+        }
+        System.out.println("Maximum area: " + maxArea);
+
+    }
+
+    public static String simplifyPath(String path) {
+        Stack<String> s = new Stack<>();
+        StringBuilder res = new StringBuilder();
+
+        String[] p = path.split("/");
+
+        for (int i = 0; i < p.length; i++) {
+            System.out.println(p[i]);
+            if (!s.isEmpty() && p[i].equals("..")) {
+                s.pop();
+            } else if (!p[i].equals("") && !p[i].equals(".") && !p[i].equals("..")) {
+                s.push(p[i]);
+            }
+
+        }
+        if (s.isEmpty())
+            return "/";
+        while (!s.isEmpty()) {
+            res.insert(0, s.pop()).insert(0, "/");
+        }
+        return res.toString();
+    }
+
     public static void main(String args[]) {
 
         // StackArrayList s = new StackArrayList();
@@ -297,9 +366,17 @@ public class StackB {
         // String str = "({}[][)[]";
         // System.out.println(isValid(str));
 
-        // Question 7 => Duplicate parentheses
-        String str = "(((a+b)+(c+d)))";
-        System.out.println(isDuplicate(str));
+        // // Question 7 => Duplicate parentheses
+        // String str = "(((a+b)+(c+d)))";
+        // System.out.println(isDuplicate(str));
 
+        // // Question-8 => Max Rectangular Area in Histogram
+        // int arr[] = { 12, 1, 5, 6, 2, 3 }; // heights of histogram
+        // maxArea(arr);
+
+        // Question-9 => simplfiy path
+
+        String path = "/home/user/Documents/../Pictures";
+        System.out.println(simplifyPath(path));
     }
 }
