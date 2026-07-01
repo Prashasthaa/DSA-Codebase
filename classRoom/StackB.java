@@ -287,6 +287,31 @@ public class StackB {
         return res.toString();
     }
 
+    public static int longestValidParentheses(String s) {
+        int n = s.length();
+        int index = -1;
+        Stack<Integer> stack = new Stack<>();
+        int ans = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (s.charAt(i) == '(') {
+                stack.push(i);
+            } else {
+                if (!stack.isEmpty()) {
+                    stack.pop();
+                    if (!stack.isEmpty()) {
+                        ans = Math.max(ans, i - stack.peek());
+                    } else {
+                        ans = Math.max(ans, i - index);
+                    }
+                } else {
+                    index = i;
+                }
+            }
+        }
+        return ans;
+    }
+
     public static void main(String args[]) {
 
         // StackArrayList s = new StackArrayList();
@@ -376,7 +401,11 @@ public class StackB {
 
         // Question-9 => simplfiy path
 
-        String path = "/home/user/Documents/../Pictures";
-        System.out.println(simplifyPath(path));
+        // String path = "/home/user/Documents/../Pictures";
+        // System.out.println(simplifyPath(path));
+
+        // Question -10 => longest valid parenthess lenght
+        String s = "(()";
+        System.out.println(longestValidParentheses(s));
     }
 }
