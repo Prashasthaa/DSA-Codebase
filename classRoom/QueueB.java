@@ -196,6 +196,16 @@ public class QueueB {
         }
     }
 
+    public static void queueReversal(Queue<Integer> q) {
+        Stack<Integer> s = new Stack<>();
+        while (!q.isEmpty()) {
+            s.push(q.remove());
+        }
+        while (!s.isEmpty()) {
+            q.add(s.pop());
+        }
+    }
+
     public static void main(String[] args) {
         // Queue<Integer> q = new LinkedList<>();
         // Queue<Integer> q = new ArrayDeque<>();
@@ -227,7 +237,8 @@ public class QueueB {
         q.add(9);
         q.add(10);
 
-        interLeave(q);
+        // interLeave(q);
+        queueReversal(q);
         while (!q.isEmpty()) {
             System.out.println(q.peek());
             q.remove();
