@@ -1,15 +1,15 @@
 
-/* Structure of a link list node
-class Node{
+//  Structure of a link list node
+class Node {
     int data;
     Node next;
 
-    Node(int x){
+    Node(int x) {
         data = x;
         next = null;
     }
 }
-*/
+
 class OddEvenLinkedList {
     Node divide(Node head) {
         // code here

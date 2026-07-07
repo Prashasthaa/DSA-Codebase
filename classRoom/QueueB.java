@@ -1,47 +1,47 @@
-/* Queue using JCF */
-// import java.util.*;
-// import java.util.LinkedList;
 
-import java.util.Stack;
+/* Queue using JCF */
+import java.util.*;
+// import java.util.LinkedList;
+import java.util.LinkedList;
 
 public class QueueB {
     /* Queue using 2 stacks */
-    static class Queue {
-        static Stack<Integer> s1 = new Stack<>();
-        static Stack<Integer> s2 = new Stack<>();
+    // static class Queue {
+    // static Stack<Integer> s1 = new Stack<>();
+    // static Stack<Integer> s2 = new Stack<>();
 
-        public static boolean isEmpty() {
-            return s1.isEmpty();
-        }
+    // public static boolean isEmpty() {
+    // return s1.isEmpty();
+    // }
 
-        public static void add(int data) {
-            while (!s1.isEmpty()) {
-                s2.push(s1.pop());
-            }
+    // public static void add(int data) {
+    // while (!s1.isEmpty()) {
+    // s2.push(s1.pop());
+    // }
 
-            s1.push(data);
-            while (!s2.isEmpty()) {
-                s1.push(s2.pop());
-            }
-        }
+    // s1.push(data);
+    // while (!s2.isEmpty()) {
+    // s1.push(s2.pop());
+    // }
+    // }
 
-        public static int remove() {
-            if (isEmpty()) {
-                System.out.println("Queue empty");
-                return -1;
-            }
-            return s1.pop();
-        }
+    // public static int remove() {
+    // if (isEmpty()) {
+    // System.out.println("Queue empty");
+    // return -1;
+    // }
+    // return s1.pop();
+    // }
 
-        public static int peek() {
-            if (isEmpty()) {
-                System.out.println("Queue empty");
-                return -1;
-            }
-            return s1.peek();
-        }
+    // public static int peek() {
+    // if (isEmpty()) {
+    // System.out.println("Queue empty");
+    // return -1;
+    // }
+    // return s1.peek();
+    // }
 
-    }
+    // }
     /* Queue using linked list */
     // static class Node {
     // int data;
@@ -163,19 +163,43 @@ public class QueueB {
     // }
     // }
 
+    public static void printNonRepeating(String str) {
+        int freq[] = new int[26];
+        Queue<Character> q = new LinkedList<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            q.add(ch);
+            freq[ch - 'a']++;
+
+            while (!q.isEmpty() && freq[q.peek() - 'a'] > 1) {
+                q.remove();
+            }
+            if (q.isEmpty()) {
+                System.out.println("-1");
+            } else {
+                System.out.println(q.peek());
+            }
+        }
+    }
+
     public static void main(String[] args) {
         // Queue<Integer> q = new LinkedList<>();
         // Queue<Integer> q = new ArrayDeque<>();
-        Queue q = new Queue();
+        // Queue q = new Queue();
 
-        q.add(1);
-        q.add(2);
-        q.add(3);
+        // q.add(1);
+        // q.add(2);
+        // q.add(3);
 
-        while (!q.isEmpty()) {
-            System.out.println(q.peek());
-            q.remove();
-        }
+        // while (!q.isEmpty()) {
+        // System.out.println(q.peek());
+        // q.remove();
+        // }
+
+        // Question 4
+        String str = "aabccxb";
+        printNonRepeating(str);
 
     }
 }
