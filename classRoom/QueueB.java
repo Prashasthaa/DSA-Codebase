@@ -1,62 +1,105 @@
+/* Queue using JCF */
+// import java.util.*;
+// import java.util.LinkedList;
+
+import java.util.Stack;
+
 public class QueueB {
-    /* Queue using linked list */
-    static class Node {
-        int data;
-        Node next;
-
-        Node(int data) {
-            this.data = data;
-            this.next = null;
-
-        }
-    }
-
+    /* Queue using 2 stacks */
     static class Queue {
-
-        static Node head = null;
-        static Node tail = null;
+        static Stack<Integer> s1 = new Stack<>();
+        static Stack<Integer> s2 = new Stack<>();
 
         public static boolean isEmpty() {
-            return head == null && tail == null;
+            return s1.isEmpty();
         }
 
-        // add
         public static void add(int data) {
-            Node newNode = new Node(data);
-            if (head == null) {
-                head = tail = newNode;
-                return;
+            while (!s1.isEmpty()) {
+                s2.push(s1.pop());
             }
-            tail.next = newNode;
-            tail = newNode;
+
+            s1.push(data);
+            while (!s2.isEmpty()) {
+                s1.push(s2.pop());
+            }
         }
 
-        // remove
         public static int remove() {
             if (isEmpty()) {
-                System.out.println("empty queue");
+                System.out.println("Queue empty");
                 return -1;
             }
-            int front = head.data;
-            if (tail == head) {
-                tail = head = null;
-            } else {
-                head = head.next;
-            }
-            return front;
-
+            return s1.pop();
         }
 
-        // peek
         public static int peek() {
-
             if (isEmpty()) {
-                System.out.println("empty queue");
+                System.out.println("Queue empty");
                 return -1;
             }
-            return head.data;
+            return s1.peek();
         }
+
     }
+    /* Queue using linked list */
+    // static class Node {
+    // int data;
+    // Node next;
+
+    // Node(int data) {
+    // this.data = data;
+    // this.next = null;
+
+    // }
+    // }
+
+    // static class Queue {
+
+    // static Node head = null;
+    // static Node tail = null;
+
+    // public static boolean isEmpty() {
+    // return head == null && tail == null;
+    // }
+
+    // // add
+    // public static void add(int data) {
+    // Node newNode = new Node(data);
+    // if (head == null) {
+    // head = tail = newNode;
+    // return;
+    // }
+    // tail.next = newNode;
+    // tail = newNode;
+    // }
+
+    // // remove
+    // public static int remove() {
+    // if (isEmpty()) {
+    // System.out.println("empty queue");
+    // return -1;
+    // }
+    // int front = head.data;
+    // if (tail == head) {
+    // tail = head = null;
+    // } else {
+    // head = head.next;
+    // }
+    // return front;
+
+    // }
+
+    // // peek
+    // public static int peek() {
+
+    // if (isEmpty()) {
+    // System.out.println("empty queue");
+    // return -1;
+    // }
+    // return head.data;
+    // }
+    // }
     /* Queue using array */
     // static class Queue {
     // static int arr[];
@@ -121,7 +164,10 @@ public class QueueB {
     // }
 
     public static void main(String[] args) {
+        // Queue<Integer> q = new LinkedList<>();
+        // Queue<Integer> q = new ArrayDeque<>();
         Queue q = new Queue();
+
         q.add(1);
         q.add(2);
         q.add(3);
