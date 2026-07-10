@@ -163,46 +163,78 @@ public class QueueB {
     // }
     // }
 
-    public static void printNonRepeating(String str) {
-        int freq[] = new int[26];
-        Queue<Character> q = new LinkedList<>();
+    // public static void printNonRepeating(String str) {
+    // int freq[] = new int[26];
+    // Queue<Character> q = new LinkedList<>();
 
-        for (int i = 0; i < str.length(); i++) {
-            char ch = str.charAt(i);
-            q.add(ch);
-            freq[ch - 'a']++;
+    // for (int i = 0; i < str.length(); i++) {
+    // char ch = str.charAt(i);
+    // q.add(ch);
+    // freq[ch - 'a']++;
 
-            while (!q.isEmpty() && freq[q.peek() - 'a'] > 1) {
-                q.remove();
-            }
-            if (q.isEmpty()) {
-                System.out.println("-1");
-            } else {
-                System.out.println(q.peek());
-            }
+    // while (!q.isEmpty() && freq[q.peek() - 'a'] > 1) {
+    // q.remove();
+    // }
+    // if (q.isEmpty()) {
+    // System.out.println("-1");
+    // } else {
+    // System.out.println(q.peek());
+    // }
+    // }
+    // }
+
+    // public static void interLeave(Queue<Integer> q) {
+    // Queue<Integer> first = new LinkedList<>();
+    // int size = q.size();
+    // for (int i = 0; i < size / 2; i++) {
+    // first.add(q.remove());
+    // }
+
+    // while (!first.isEmpty()) {
+    // q.add(first.remove());
+    // q.add(q.remove());
+    // }
+    // }
+
+    // public static void queueReversal(Queue<Integer> q) {
+    // Stack<Integer> s = new Stack<>();
+    // while (!q.isEmpty()) {
+    // s.push(q.remove());
+    // }
+    // while (!s.isEmpty()) {
+    // q.add(s.pop());
+    // }
+    // }
+
+    static class Stack {
+        Deque<Integer> deque = new LinkedList<>();
+
+        public void push(int data) {
+            deque.addLast(data);
+        }
+
+        public int pop() {
+            return deque.removeLast();
+        }
+
+        public int peek() {
+            return deque.getLast();
         }
     }
 
-    public static void interLeave(Queue<Integer> q) {
-        Queue<Integer> first = new LinkedList<>();
-        int size = q.size();
-        for (int i = 0; i < size / 2; i++) {
-            first.add(q.remove());
+    static class Queue {
+        Deque<Integer> deque = new LinkedList<>();
+
+        public void add(int data) {
+            deque.addLast(data);
         }
 
-        while (!first.isEmpty()) {
-            q.add(first.remove());
-            q.add(q.remove());
+        public int remove() {
+            return deque.removeFirst();
         }
-    }
 
-    public static void queueReversal(Queue<Integer> q) {
-        Stack<Integer> s = new Stack<>();
-        while (!q.isEmpty()) {
-            s.push(q.remove());
-        }
-        while (!s.isEmpty()) {
-            q.add(s.pop());
+        public int peek() {
+            return deque.getFirst();
         }
     }
 
@@ -244,18 +276,36 @@ public class QueueB {
         // q.remove();
         // }
 
-        // Double ended queue
-        Deque<Integer> deque = new LinkedList<>();
-        deque.addFirst(1);
-        deque.addFirst(2);
-        deque.addLast(4);
-        deque.addLast(3);
-        System.out.println(deque);
-        deque.removeFirst();
-        deque.removeLast();
-        System.out.println(deque);
+        // // Double ended queue
+        // Deque<Integer> deque = new LinkedList<>();
+        // deque.addFirst(1);
+        // deque.addFirst(2);
+        // deque.addLast(4);
+        // deque.addLast(3);
+        // System.out.println(deque);
+        // deque.removeFirst();
+        // deque.removeLast();
+        // System.out.println(deque);
 
-        System.out.println("first el=" + deque.getFirst());
-        System.out.println("last el=" + deque.getLast());
+        // System.out.println("first el=" + deque.getFirst());
+        // System.out.println("last el=" + deque.getLast());
+
+        // Stack s = new Stack();
+        // s.push(1);
+        // s.push(2);
+        // s.push(3);
+        // System.out.println("peek=" + s.peek());
+        // System.out.println(s.pop());
+        // System.out.println(s.pop());
+        // System.out.println(s.pop());
+
+        Queue q = new Queue();
+        q.add(1);
+        q.add(2);
+        q.add(3);
+        System.out.println("peek=" + q.peek());
+        System.out.println(q.remove());
+        System.out.println(q.remove());
+        System.out.println(q.remove());
     }
 }
