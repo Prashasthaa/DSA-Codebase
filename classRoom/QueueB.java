@@ -224,25 +224,38 @@ public class QueueB {
         // String str = "aabccxb";
         // printNonRepeating(str);
 
-        // Question 5
-        Queue<Integer> q = new LinkedList<>();
-        q.add(1);
-        q.add(2);
-        q.add(3);
-        q.add(4);
-        q.add(5);
-        q.add(6);
-        q.add(7);
-        q.add(8);
-        q.add(9);
-        q.add(10);
+        // // Question 5
+        // Queue<Integer> q = new LinkedList<>();
+        // q.add(1);
+        // q.add(2);
+        // q.add(3);
+        // q.add(4);
+        // q.add(5);
+        // q.add(6);
+        // q.add(7);
+        // q.add(8);
+        // q.add(9);
+        // q.add(10);
 
-        // interLeave(q);
-        queueReversal(q);
-        while (!q.isEmpty()) {
-            System.out.println(q.peek());
-            q.remove();
-        }
+        // // interLeave(q);
+        // queueReversal(q);
+        // while (!q.isEmpty()) {
+        // System.out.println(q.peek());
+        // q.remove();
+        // }
 
+        // Double ended queue
+        Deque<Integer> deque = new LinkedList<>();
+        deque.addFirst(1);
+        deque.addFirst(2);
+        deque.addLast(4);
+        deque.addLast(3);
+        System.out.println(deque);
+        deque.removeFirst();
+        deque.removeLast();
+        System.out.println(deque);
+
+        System.out.println("first el=" + deque.getFirst());
+        System.out.println("last el=" + deque.getLast());
     }
 }
