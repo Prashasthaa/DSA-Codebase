@@ -36,10 +36,44 @@ public class greeedyAlgo {
         }
     }
 
-    public static void main(String[] args) {
-        int start[] = { 1, 3, 0, 5, 8, 5 };
-        int end[] = { 2, 4, 6, 7, 9, 9 };
+    public static void fractionalKnapsack(int[] val, int[] wieght, int capcity) {
+        double ratio[][] = new double[val.length][2];
+        // 0th col=>idx; 1st col=> ratio;
 
-        activitySelection(start, end);
+        for (int i = 0; i < val.length; i++) {
+            ratio[i][0] = i;
+            ratio[i][1] = val[i] / (double) wieght[i];
+        }
+
+        Arrays.sort(ratio, Comparator.comparingDouble(o -> o[1]));
+
+        int value = 0;
+        int W = capcity;
+
+        for (int i = ratio.length - 1; i >= 0; i--) {
+            int idx = (int) ratio[i][0];
+            if (W >= wieght[idx]) {
+                value += val[idx];
+                W = W - wieght[idx];
+            } else {
+                // fractional item
+                value += ratio[i][1] * W;
+                W = 0;
+                break;
+            }
+        }
+        System.out.println(value);
+    }
+
+    public static void main(String[] args) {
+        // int start[] = { 1, 3, 0, 5, 8, 5 };
+        // int end[] = { 2, 4, 6, 7, 9, 9 };
+
+        // activitySelection(start, end);
+
+        int val[] = { 60, 100, 120 };
+        int wieght[] = { 10, 20, 30 };
+        int W = 50;
+        fractionalKnapsack(val, wieght, W);
     }
 }
