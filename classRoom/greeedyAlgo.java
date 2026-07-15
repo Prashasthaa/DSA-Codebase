@@ -65,15 +65,33 @@ public class greeedyAlgo {
         System.out.println(value);
     }
 
+    public static void minumumSumAbsoluteDifference(int[] A, int[] B) {
+        Arrays.sort(A);
+        Arrays.sort(B);
+
+        int minDiff = 0;
+        for (int i = 0; i < A.length; i++) {
+            int diff = Math.abs(A[i] - B[i]);
+            minDiff += diff;
+        }
+        System.out.println("minumum Sum Absolute Difference= " + minDiff);
+    }
+
     public static void main(String[] args) {
         // int start[] = { 1, 3, 0, 5, 8, 5 };
         // int end[] = { 2, 4, 6, 7, 9, 9 };
 
         // activitySelection(start, end);
 
-        int val[] = { 60, 100, 120 };
-        int wieght[] = { 10, 20, 30 };
-        int W = 50;
-        fractionalKnapsack(val, wieght, W);
+        // int val[] = { 60, 100, 120 };
+        // int wieght[] = { 10, 20, 30 };
+        // int W = 50;
+        // fractionalKnapsack(val, wieght, W);
+
+        // minumum sum absolute difference
+        int A[] = { 1, 2, 3 };
+        int B[] = { 2, 1, 4 };
+        minumumSumAbsoluteDifference(A, B);
+
     }
 }
