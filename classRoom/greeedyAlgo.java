@@ -77,6 +77,22 @@ public class greeedyAlgo {
         System.out.println("minumum Sum Absolute Difference= " + minDiff);
     }
 
+    public static int findLongestChain(int[][] pairs) {
+
+        Arrays.sort(pairs, Comparator.comparingDouble(o -> o[1]));
+        int lastEnd = pairs[0][1];
+        int length = 1;
+
+        for (int i = 1; i < pairs.length; i++) {
+            if (pairs[i][0] > lastEnd) {
+                length = length + 1;
+                lastEnd = pairs[i][1];
+            }
+        }
+        return length;
+
+    }
+
     public static void main(String[] args) {
         // int start[] = { 1, 3, 0, 5, 8, 5 };
         // int end[] = { 2, 4, 6, 7, 9, 9 };
@@ -88,10 +104,13 @@ public class greeedyAlgo {
         // int W = 50;
         // fractionalKnapsack(val, wieght, W);
 
-        // minumum sum absolute difference
-        int A[] = { 1, 2, 3 };
-        int B[] = { 2, 1, 4 };
-        minumumSumAbsoluteDifference(A, B);
+        // // minumum sum absolute difference
+        // int A[] = { 1, 2, 3 };
+        // int B[] = { 2, 1, 4 };
+        // minumumSumAbsoluteDifference(A, B);
 
+        // 646. Maximum Length of Pair Chain
+        int[][] pairs = { { 1, 2 }, { 7, 8 }, { 4, 5 } };
+        System.out.println(findLongestChain(pairs));
     }
 }
