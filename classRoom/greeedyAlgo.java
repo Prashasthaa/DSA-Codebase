@@ -77,7 +77,7 @@ public class greeedyAlgo {
         System.out.println("minumum Sum Absolute Difference= " + minDiff);
     }
 
-    public static int findLongestChain(int[][] pairs) {
+    public static int findLongestChain(int[][] pairs) { // O(nlogn)
 
         Arrays.sort(pairs, Comparator.comparingDouble(o -> o[1]));
         int lastEnd = pairs[0][1];
@@ -91,6 +91,20 @@ public class greeedyAlgo {
         }
         return length;
 
+    }
+
+    public static void coinChange(Integer[] coins, int amount) {
+        Arrays.sort(coins, Comparator.reverseOrder());
+        int count = 0;
+        for (int i = 0; i < coins.length && amount != 0; i++) {
+            // if (coins[i] <= amount) {
+            while (coins[i] <= amount) {
+                count = count + 1;
+                amount = amount - coins[i];
+                // }
+            }
+        }
+        System.out.println(count);
     }
 
     public static void main(String[] args) {
@@ -109,8 +123,14 @@ public class greeedyAlgo {
         // int B[] = { 2, 1, 4 };
         // minumumSumAbsoluteDifference(A, B);
 
-        // 646. Maximum Length of Pair Chain
-        int[][] pairs = { { 1, 2 }, { 7, 8 }, { 4, 5 } };
-        System.out.println(findLongestChain(pairs));
+        // // 646. Maximum Length of Pair Chain
+        // int[][] pairs = { { 1, 2 }, { 7, 8 }, { 4, 5 } };
+        // System.out.println(findLongestChain(pairs));
+
+        // Minimum number of Coins
+        Integer[] coins = { 1, 2, 5, 10, 20, 50, 100, 500, 1000, 2000 };
+        int amount = 591;
+        coinChange(coins, amount);
+
     }
 }
