@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class greeedyAlgo {
@@ -107,6 +108,19 @@ public class greeedyAlgo {
         System.out.println(count);
     }
 
+    static class Job {
+        int deadline;
+        int profit;
+        int id;
+
+        public Job(int i, int d, int p) {
+            id = 1;
+            deadline = d;
+            profit = p;
+        }
+
+    }
+
     public static void main(String[] args) {
         // int start[] = { 1, 3, 0, 5, 8, 5 };
         // int end[] = { 2, 4, 6, 7, 9, 9 };
@@ -127,10 +141,36 @@ public class greeedyAlgo {
         // int[][] pairs = { { 1, 2 }, { 7, 8 }, { 4, 5 } };
         // System.out.println(findLongestChain(pairs));
 
-        // Minimum number of Coins
-        Integer[] coins = { 1, 2, 5, 10, 20, 50, 100, 500, 1000, 2000 };
-        int amount = 591;
-        coinChange(coins, amount);
+        // // Minimum number of Coins
+        // Integer[] coins = { 1, 2, 5, 10, 20, 50, 100, 500, 1000, 2000 };
+        // int amount = 591;
+        // coinChange(coins, amount);
 
+        // Maximum Profit in Job Scheduling
+        int jobsInfo[][] = { { 4, 20 }, { 1, 10 }, { 1, 40 }, { 1, 30 } };
+        ArrayList<Job> jobs = new ArrayList<>();
+
+        for (int i = 0; i < jobsInfo.length; i++) {
+            jobs.add(new Job(i, jobsInfo[i][0], jobsInfo[i][1]));
+        }
+
+        Collections.sort(jobs, (obj1, obj2) -> obj2.profit - obj1.profit);// descending order
+
+        ArrayList<Integer> seq = new ArrayList<>();
+        int time = 0;
+        for (int i = 0; i < jobs.size(); i++) {
+            Job curr = jobs.get(i);
+            if (curr.deadline > time) {
+                seq.add(curr.id);
+                time++;
+            }
+        }
+
+        // print seq
+        System.out.println(" max jobs = " + seq.size());
+        for (int i = 0; i < seq.size(); i++) {
+            System.out.println(seq.get(i) + " ");
+        }
+        System.out.println();
     }
 }
