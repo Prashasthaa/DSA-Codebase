@@ -1,5 +1,5 @@
 
-public class LinkedList {
+public class LinkedListB {
     public static class Node {
         int data;
         Node next;
@@ -485,7 +485,7 @@ public class LinkedList {
         // removeCycle();
         // System.out.println(isCycle());
 
-        LinkedList ll = new LinkedList();
+        LinkedListB ll = new LinkedListB();
         ll.addFirst(5);
         ll.addFirst(4);
         ll.addFirst(3);
