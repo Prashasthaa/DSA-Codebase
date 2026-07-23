@@ -114,6 +114,16 @@ public class BinaryTreesB {
 
     }
 
+    public static int sum(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        int lsum = sum(root.left);
+        int rsum = sum(root.right);
+        return lsum + rsum + root.data;
+
+    }
+
     public static void main(String[] args) {
         int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
 
@@ -136,6 +146,7 @@ public class BinaryTreesB {
 
         System.out.println("Height= " + height(root));
         System.out.println("Count of NOdes= " + count(root));
+        System.out.println("Sum=" + sum(root));
 
     }
 }
