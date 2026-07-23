@@ -93,16 +93,38 @@ public class BinaryTreesB {
         }
     }
 
+    public static int height(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int lh = height(root.left);
+        int rh = height(root.right);
+        int height = Math.max(lh, rh) + 1;
+        return height;
+    }
+
     public static void main(String[] args) {
         int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
 
-        BinaryTree tree = new BinaryTree();
-        Node root = tree.buildTree(nodes);
-        // System.out.println(root.right.right.data);
-        // tree.preorder(root);
-        // tree.inorder(root);
-        // tree.postorder(root);
-        tree.levelOrder(root);
+        // BinaryTree tree = new BinaryTree();
+        // Node root = tree.buildTree(nodes);
+        // // System.out.println(root.right.right.data);
+        // // tree.preorder(root);
+        // // tree.inorder(root);
+        // // tree.postorder(root);
+        // tree.levelOrder(root);
+
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+        root.right.right = new Node(7);
+        // root.right.right.right = new Node(7);
+
+        System.out.println("Height= " + height(root));
 
     }
 }
