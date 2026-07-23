@@ -124,6 +124,20 @@ public class BinaryTreesB {
 
     }
 
+    public static int diameter(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int leftDiam = diameter(root.left);
+        int rightDiam = diameter(root.right);
+        int leftHeight = height(root.left);
+        int rightHeight = height(root.right);
+
+        int selfDiam = leftHeight + rightHeight + 1;
+        return Math.max(selfDiam, Math.max(rightDiam, leftDiam));
+    }
+
     public static void main(String[] args) {
         int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
 
@@ -147,6 +161,7 @@ public class BinaryTreesB {
         System.out.println("Height= " + height(root));
         System.out.println("Count of NOdes= " + count(root));
         System.out.println("Sum=" + sum(root));
+        System.out.println("Diameter=" + diameter(root));
 
     }
 }
