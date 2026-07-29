@@ -314,6 +314,38 @@ public class BinaryTreesB {
         return root;
     }
 
+    public static int lcaDist(Node root, int n) {
+        if (root == null) {
+            return -1;
+        }
+        if (root.data == n) {
+            return 0;
+        }
+        int leftlca = lcaDist(root.left, n);
+        int rightlca = lcaDist(root.right, n);
+
+        if (leftlca == -1 && rightlca == -1) {
+            return -1;
+        }
+
+        else if (leftlca == -1) {
+            return rightlca + 1;
+        } else {
+            return leftlca + 1;
+        }
+
+    }
+
+    public static int minDistance(Node root, int n1, int n2) {
+
+        Node lca = lca2(root, n1, n2);
+        int dist1 = lcaDist(lca, n1);
+        int dist2 = lcaDist(lca, n2);
+
+        return dist1 + dist2;
+
+    }
+
     public static void main(String[] args) {
         // int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
 
@@ -364,8 +396,9 @@ public class BinaryTreesB {
         // topView(root);
 
         // KLevel(root, 1, 2);
-        int n1 = 4, n2 = 5;
+        int n1 = 4, n2 = 60;
         // System.out.println(lca(root, n1, n2).data);
-        System.out.println(lca2(root, n1, n2).data);
+        // System.out.println(lca2(root, n1, n2).data);
+        System.out.println(minDistance(root, n1, n2));
     }
 }
