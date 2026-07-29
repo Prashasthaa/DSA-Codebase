@@ -368,6 +368,31 @@ public class BinaryTreesB {
         return max + 1;
     }
 
+    public static int treeSum(Node root) {
+        if (root == null) {
+            return 0;
+
+        }
+        int left = treeSum(root.left);
+        int right = treeSum(root.right);
+        int data = root.data;
+
+        int newLeft = root.left == null ? 0 : root.left.data;
+        int newRight = root.right == null ? 0 : root.right.data;
+        root.data = newLeft + left + newRight + right;
+        return data;
+    }
+
+    public static void preorder(Node root) {
+        if (root == null) {
+            // System.out.println(-1);
+            return;
+        }
+        System.out.println(root.data + " ");
+        preorder(root.left);
+        preorder(root.right);
+    }
+
     public static void main(String[] args) {
         // int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
 
@@ -424,6 +449,16 @@ public class BinaryTreesB {
         // System.out.println(minDistance(root, n1, n2));
 
         int n = 5, k = 1;
-        KAncestor(root, n, k);
+        // KAncestor(root, n, k);
+        treeSum(root);
+        preorder(root);
+        // System.out.println(root.data);
+        // System.out.println(root.left.data);
+        // System.out.println(root.right.data);
+        // System.out.println(root.left.left.data);
+        // System.out.println(root.left.right.data);
+        // System.out.println(root.right.left.data);
+        // System.out.println(root.right.right.data);
+
     }
 }
