@@ -295,6 +295,25 @@ public class BinaryTreesB {
         return lca;
     }
 
+    // Lowest common ancestor approach -2
+    public static Node lca2(Node root, int n1, int n2) {
+        if (root == null || root.data == n1 || root.data == n2) {
+            return root;
+        }
+
+        Node leftlca = lca2(root.left, n1, n2);
+        Node rightlca = lca2(root.right, n1, n2);
+
+        if (rightlca == null) {
+            return leftlca;
+        }
+        if (leftlca == null) {
+            return rightlca;
+        }
+
+        return root;
+    }
+
     public static void main(String[] args) {
         // int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
 
@@ -345,7 +364,8 @@ public class BinaryTreesB {
         // topView(root);
 
         // KLevel(root, 1, 2);
-        int n1 = 4, n2 = 7;
-        System.out.println(lca(root, n1, n2).data);
+        int n1 = 4, n2 = 5;
+        // System.out.println(lca(root, n1, n2).data);
+        System.out.println(lca2(root, n1, n2).data);
     }
 }
