@@ -346,6 +346,28 @@ public class BinaryTreesB {
 
     }
 
+    public static int KAncestor(Node root, int n, int k) {
+        if (root == null) {
+            return -1;
+        }
+        if (root.data == n) {
+            return 0;
+        }
+
+        int leftDist = KAncestor(root.left, n, k);
+        int rightDist = KAncestor(root.right, n, k);
+
+        if (leftDist == -1 && rightDist == -1) {
+            return -1;
+        }
+
+        int max = Math.max(leftDist, rightDist);
+        if (max + 1 == k) {
+            System.out.println(root.data);
+        }
+        return max + 1;
+    }
+
     public static void main(String[] args) {
         // int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
 
@@ -396,9 +418,12 @@ public class BinaryTreesB {
         // topView(root);
 
         // KLevel(root, 1, 2);
-        int n1 = 4, n2 = 60;
+        // int n1 = 4, n2 = 60;
         // System.out.println(lca(root, n1, n2).data);
         // System.out.println(lca2(root, n1, n2).data);
-        System.out.println(minDistance(root, n1, n2));
+        // System.out.println(minDistance(root, n1, n2));
+
+        int n = 5, k = 1;
+        KAncestor(root, n, k);
     }
 }
