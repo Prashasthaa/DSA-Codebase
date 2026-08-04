@@ -452,13 +452,6 @@ public class BinaryTreesB {
         // KAncestor(root, n, k);
         treeSum(root);
         preorder(root);
-        // System.out.println(root.data);
-        // System.out.println(root.left.data);
-        // System.out.println(root.right.data);
-        // System.out.println(root.left.left.data);
-        // System.out.println(root.left.right.data);
-        // System.out.println(root.right.left.data);
-        // System.out.println(root.right.right.data);
 
     }
 }
