@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class BinarySearchTreeB {
 
     static class Node {
@@ -88,6 +90,29 @@ public class BinarySearchTreeB {
         }
     }
 
+    public static void printPath(ArrayList<Integer> path) {
+        for (int i = 0; i < path.size(); i++) {
+            System.out.print(path.get(i) + "-> ");
+        }
+        System.out.println("Null");
+    }
+
+    public static void printRoot2Leaf(Node root, ArrayList<Integer> path) {
+        if (root == null) {
+            return;
+        }
+
+        path.add(root.data);
+
+        if (root.left == null && root.right == null) {
+            printPath(path);
+        }
+
+        printRoot2Leaf(root.left, path);
+        printRoot2Leaf(root.right, path);
+        path.remove(path.size() - 1);
+    }
+
     public static void main(String[] args) {
         int values[] = { 8, 5, 3, 1, 4, 6, 10, 11, 14 };
         Node root = null;
@@ -95,10 +120,12 @@ public class BinarySearchTreeB {
         for (int i = 0; i < values.length; i++) {
             root = insert(root, values[i]);
         }
-        inorder(root);
-        System.out.println(search(root, 7));
-        delete(root, 10);
-        inorder(root);
+        // inorder(root);
+        // System.out.println(search(root, 7));
+        // delete(root, 10);
+        // inorder(root);
+
+        printRoot2Leaf(root, new ArrayList<>());
 
     }
 }
