@@ -139,6 +139,15 @@ public class BinarySearchTreeB {
         return root;
     }
 
+    public static void preOrder(Node root) {
+        if (root == null) {
+            return;
+        }
+        System.out.print(root.data + " ");
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+
     public static void main(String[] args) {
         // // int values[] = { 8, 5, 3, 6, 10, 11, 14 };
         // int values[] = { 1, 1, 1 };
@@ -164,7 +173,13 @@ public class BinarySearchTreeB {
         inorder(root);
         System.out.println();
         System.out.println("------------------");
+        preOrder(root);
+        System.out.println();
+        System.out.println("------------------");
         createMirror(root);
         inorder(root);
+        System.out.println();
+        System.out.println("------------------");
+        preOrder(root);
     }
 }
