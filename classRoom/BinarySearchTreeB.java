@@ -127,21 +127,44 @@ public class BinarySearchTreeB {
         return isValidBST(root.left, root, min) && isValidBST(root.right, max, root);
     }
 
-    public static void main(String[] args) {
-        // int values[] = { 8, 5, 3, 6, 10, 11, 14 };
-        int values[] = { 1, 1, 1 };
-        Node root = null;
-
-        for (int i = 0; i < values.length; i++) {
-            root = insert(root, values[i]);
+    public static Node createMirror(Node root) {
+        if (root == null) {
+            return null;
         }
-        // inorder(root);
-        // System.out.println(search(root, 7));
-        // delete(root, 10);
-        // inorder(root);
 
-        printRoot2Leaf(root, new ArrayList<>());
-        System.out.println(isValidBST(root, null, null));
+        Node leftS = createMirror(root.left);
+        Node rightS = createMirror(root.right);
+        root.left = rightS;
+        root.right = leftS;
+        return root;
+    }
 
+    public static void main(String[] args) {
+        // // int values[] = { 8, 5, 3, 6, 10, 11, 14 };
+        // int values[] = { 1, 1, 1 };
+        // Node root = null;
+
+        // for (int i = 0; i < values.length; i++) {
+        // root = insert(root, values[i]);
+        // }
+        // // inorder(root);
+        // // System.out.println(search(root, 7));
+        // // delete(root, 10);
+        // // inorder(root);
+
+        // printRoot2Leaf(root, new ArrayList<>());
+        // System.out.println(isValidBST(root, null, null));
+
+        Node root = new Node(8);
+        root.left = new Node(5);
+        root.left.left = new Node(3);
+        root.left.right = new Node(6);
+        root.right = new Node(10);
+        root.right.right = new Node(11);
+        inorder(root);
+        System.out.println();
+        System.out.println("------------------");
+        createMirror(root);
+        inorder(root);
     }
 }
